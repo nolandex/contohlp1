@@ -7,19 +7,25 @@ import {
     SheetTrigger,
 } from "@/components/ui/sheet";
 import { SIDEBAR_LINKS } from "@/constants/links";
-import { useClerk } from "@clerk/nextjs";
+// import { useClerk } from "@clerk/nextjs";
 import { LogOutIcon, MenuIcon, SearchIcon } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 const MobileSidebar = () => {
 
-    const { signOut } = useClerk();
+    // const { signOut } = useClerk();
 
     const pathname = usePathname();
 
+    // const handleLogout = async () => {
+    //     await signOut();
+    // };
+
+    // Placeholder logout function, adjust as per your new auth mechanism
     const handleLogout = async () => {
-        await signOut();
+        // Implement your logout logic here
+        alert("Logged out!");
     };
 
     return (
