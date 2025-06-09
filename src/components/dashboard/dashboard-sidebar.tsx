@@ -8,17 +8,23 @@ import Container from "../global/container";
 import { Button, buttonVariants } from "../ui/button";
 
 import { cn } from "@/functions";
-import { useClerk } from "@clerk/nextjs";
+// import { useClerk } from "@clerk/nextjs";
 
 
 const DashboardSidebar = () => {
 
-    const { signOut } = useClerk();
+    // const { signOut } = useClerk();
 
     const pathname = usePathname();
 
+    // const handleLogout = async () => {
+    //     await signOut();
+    // };
+
+    // Placeholder logout function, adjust as per your new auth mechanism
     const handleLogout = async () => {
-        await signOut();
+        // Implement your logout logic here
+        alert("Logged out!");
     };
 
     return (
