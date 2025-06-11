@@ -1,0 +1,356 @@
+{
+  "Hero.tsx": {
+    "component": "Hero",
+    "type": "client",
+    "structure": {
+      "container": {
+        "className": "flex flex-col items-center text-center w-full max-w-5xl my-16 mx-auto z-40 relative px-4",
+        "children": [
+          {
+            "badge": {
+              "className": "pl-2 pr-1 py-1 rounded-full border border-foreground/10 hover:border-foreground/15 backdrop-blur-lg cursor-pointer flex items-center gap-2.5 select-none w-max mx-auto",
+              "children": [
+                {
+                  "indicator": {
+                    "className": "w-3.5 h-3.5 rounded-full bg-primary/40 flex items-center justify-center relative",
+                    "children": [
+                      {
+                        "ping": {
+                          "className": "w-2.5 h-2.5 rounded-full bg-primary/60 flex items-center justify-center animate-ping absolute"
+                        }
+                      },
+                      {
+                        "dot": {
+                          "className": "w-1.5 h-1.5 rounded-full bg-primary flex items-center justify-center absolute"
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "text": {
+                    "className": "inline-flex items-center justify-center gap-2 bg-[linear-gradient(110deg,#b2a8fd,45%,#8678f9,55%,#c7d2fe)] bg-[length:200%_100%] bg-clip-text text-sm text-transparent animate-background-shine",
+                    "content": "Ciptakan tren baru",
+                    "badge": {
+                      "className": "text-xs text-secondary-foreground px-1.5 py-0.5 rounded-full bg-gradient-to-b from-foreground/20 to-foreground/10 flex items-center justify-center",
+                      "content": "Fitur terbaru",
+                      "icon": {
+                        "type": "ArrowRightIcon",
+                        "className": "w-3.5 h-3.5 ml-1 text-foreground/50"
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "headline": {
+              "component": "BlurText",
+              "props": {
+                "word": "Solusi cerdas untuk\n dominasi media sosial",
+                "className": "text-3xl sm:text-5xl lg:text-6xl xl:text-7xl bg-gradient-to-br from-foreground to-foreground/60 bg-clip-text text-transparent py-2 md:py-0 lg:!leading-snug font-medium mt-6 font-heading"
+              }
+            }
+          },
+          {
+            "subtitle": {
+              "className": "text-sm sm:text-base lg:text-lg mt-4 text-accent-foreground/60 max-w-2xl mx-auto",
+              "content": "Tingkatkan kehadiran online Anda dengan alat berbasis AI untuk konten dan jadwal. SocialPro adalah jawaban untuk strategi media sosial Anda.",
+              "responsiveContent": {
+                "default": "Tingkatkan kehadiran online Anda dengan alat berbasis AI untuk konten dan jadwal.",
+                "sm": "SocialPro adalah jawaban untuk strategi media sosial Anda."
+              }
+            }
+          },
+          {
+            "ctaButtons": {
+              "className": "flex items-center justify-center md:gap-x-6 mt-8",
+              "buttons": [
+                {
+                  "component": "Button",
+                  "props": {
+                    "size": "lg",
+                    "asChild": true
+                  },
+                  "link": {
+                    "component": "Link",
+                    "href": "/app",
+                    "prefetch": false,
+                    "content": "Coba gratis sekarang"
+                  }
+                },
+                {
+                  "component": "Button",
+                  "props": {
+                    "size": "lg",
+                    "variant": "outline",
+                    "className": "hidden md:flex",
+                    "asChild": true
+                  },
+                  "link": {
+                    "component": "Link",
+                    "href": "#",
+                    "prefetch": false,
+                    "content": "Pelajari caranya"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "dollarIcon": {
+              "className": "mt-16 text-7xl font-bold text-primary animate-pulse",
+              "content": "★",
+              "aria-hidden": true
+            }
+          },
+          {
+            "styles": {
+              "shineAnimation": {
+                "keyframes": {
+                  "name": "shine",
+                  "0%": { "background-position": "200% 0" },
+                  "100%": { "background-position": "-200% 0" }
+                },
+                "className": "animate-background-shine",
+                "animation": "shine 4s linear infinite"
+              }
+            }
+          }
+        ]
+      }
+    }
+  },
+  "Footer.tsx": {
+    "component": "Footer",
+    "type": "client",
+    "structure": {
+      "footer": {
+        "className": "w-full py-10",
+        "children": [
+          {
+            "faqSection": {
+              "container": {
+                "component": "Container",
+                "wrapper": {
+                  "component": "Wrapper",
+                  "className": "flex flex-col items-center pb-20",
+                  "children": {
+                    "title": {
+                      "className": "text-2xl font-bold mb-6",
+                      "content": "Pertanyaan yang Sering Diajukan"
+                    },
+                    "accordion": {
+                      "component": "Accordion",
+                      "props": {
+                        "type": "single",
+                        "collapsible": true,
+                        "className": "w-full max-w-2xl"
+                      },
+                      "items": [
+                        {
+                          "value": "item-1",
+                          "trigger": "Apa itu SocialPro?",
+                          "content": "SocialPro adalah platform inovatif untuk mengelola media sosial Anda dengan fitur AI canggih."
+                        },
+                        {
+                          "value": "item-2",
+                          "trigger": "Bagaimana cara memulai?",
+                          "content": "Daftar akun gratis di situs kami dan jelajahi dashboard untuk memulai."
+                        },
+                        {
+                          "value": "item-3",
+                          "trigger": "Apakah ada uji coba gratis?",
+                          "content": "Ya, kami menawarkan uji coba gratis 14 hari dengan akses penuh ke semua fitur."
+                        },
+                        {
+                          "value": "item-4",
+                          "trigger": "Bagaimana menghubungi dukungan?",
+                          "content": "Tim dukungan kami bisa dihubungi melalui Pusat Bantuan atau email di support@socialpro.com."
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          {
+            "copyrightSection": {
+              "container": {
+                "component": "Container",
+                "wrapper": {
+                  "component": "Wrapper",
+                  "className": "pt-10 flex items-center justify-center",
+                  "children": {
+                    "copyright": {
+                      "className": "text-sm text-secondary-foreground",
+                      "content": "© 2025 SocialPro. Hak cipta dilindungi."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  },
+  "reviews.ts": {
+    "type": "data",
+    "REVIEWS": [
+      {
+        "name": "Bima Pratama",
+        "username": "@bimapratama",
+        "review": "Platform ini mengubah cara saya mengelola kampanye sosial media. AI-nya luar biasa!",
+        "img": "https://randomuser.me/api/portraits/men/1.jpg"
+      },
+      {
+        "name": "Sari Wulandari",
+        "username": "@sariwulan",
+        "review": "Integrasi dengan platform sosial sangat mulus. Membuat konten jadi jauh lebih cepat.",
+        "img": "https://randomuser.me/api/portraits/women/2.jpg"
+      },
+      {
+        "name": "Aditya Nugraha",
+        "username": "@adityanugraha",
+        "review": "Fitur-fitur di sini tak tertandingi. Produktivitas saya meningkat pesat!",
+        "img": "https://randomuser.me/api/portraits/men/3.jpg"
+      },
+      {
+        "name": "Lina Kartika",
+        "username": "@linakartika",
+        "review": "Dukungan pelanggan sangat responsif. Selalu siap membantu kapan saja.",
+        "img": "https://randomuser.me/api/portraits/women/4.jpg"
+      },
+      {
+        "name": "Rizky Santoso",
+        "username": "@rizkysantoso",
+        "review": "Opsi kustomisasi sangat cocok untuk kebutuhan bisnis saya. Sangat direkomendasikan!",
+        "img": "https://randomuser.me/api/portraits/men/5.jpg"
+      },
+      {
+        "name": "Maya Sari",
+        "username": "@mayasari",
+        "review": "Desain intuitif dan mudah digunakan membuat platform ini wajib dimiliki.",
+        "img": "https://randomuser.me/api/portraits/women/6.jpg"
+      },
+      {
+        "name": "Dimas Wijaya",
+        "username": "@dimaswijaya",
+        "review": "Analitik dan alat AI membantu bisnis saya berkembang dengan cepat.",
+        "img": "https://randomuser.me/api/portraits/men/7.jpg"
+      },
+      {
+        "name": "Nadia Putri",
+        "username": "@nadiaputri",
+        "review": "Nilai yang saya dapat dengan harga ini sangat mengesankan. Worth it!",
+        "img": "https://randomuser.me/api/portraits/women/8.jpg"
+      },
+      {
+        "name": "Fajar Ramadhan",
+        "username": "@fajarramadhan",
+        "review": "Pembuatan konten AI menghemat waktu saya berjam-jam setiap minggu.",
+        "img": "https://randomuser.me/api/portraits/men/9.jpg"
+      },
+      {
+        "name": "Aulia Rahma",
+        "username": "@auliarahma",
+        "review": "Semua terorganisir dalam satu tempat. Mengelola tugas jadi lebih mudah.",
+        "img": "https://randomuser.me/api/portraits/women/10.jpg"
+      },
+      {
+        "name": "Hendra Kurniawan",
+        "username": "@hendrakurniawan",
+        "review": "Platform ini sangat andal, alur kerja saya jauh lebih efisien sekarang.",
+        "img": "https://randomuser.me/api/portraits/men/11.jpg"
+      },
+      {
+        "name": "Rina Amelia",
+        "username": "@rinaamelia",
+        "review": "Layanan hebat! Fitur baru terus ditambahkan dan semakin canggih.",
+        "img": "https://randomuser.me/api/portraits/women/12.jpg"
+      }
+    ]
+  },
+  "plans.ts": {
+    "type": "data",
+    "PLANS": [
+      {
+        "id": "pro",
+        "title": "Profesional",
+        "desc": "Akses fitur premium untuk strategi konten yang lebih kuat",
+        "monthlyPrice": 10,
+        "yearlyPrice": 120,
+        "badge": "Paling Populer",
+        "buttonText": "Tingkatkan ke Profesional",
+        "features": [
+          "Pembuatan konten AI tingkat lanjut",
+          "Integrasi 10 platform sosial",
+          "Dukungan email prioritas",
+          "Batas 10 proyek",
+          "Analitik dan wawasan mendalam",
+          "Generasi gambar model Pro",
+          "Alat kolaborasi tim",
+          "Opsi branding kustom"
+        ],
+        "link": "https://stripe.com/pro-plan-link"
+      },
+      {
+        "id": "enterprise",
+        "title": "Korporasi",
+        "desc": "Solusi khusus untuk organisasi besar dan agensi",
+        "monthlyPrice": 15,
+        "yearlyPrice": 180,
+        "badge": "Hubungi Penjualan",
+        "buttonText": "Tingkatkan ke Korporasi",
+        "features": [
+          "Pembuatan konten AI tanpa batas",
+          "Integrasi semua platform sosial",
+          "Manajer akun khusus",
+          "Proyek tanpa batas",
+          "Laporan dan analitik kustom",
+          "Keamanan tingkat korporasi",
+          "Pembaruan gratis"
+        ],
+        "link": "https://stripe.com/enterprise-plan-link"
+      }
+    ]
+  },
+  "perks.ts": {
+    "type": "data",
+    "PERKS": [
+      {
+        "icon": "ZapIcon",
+        "title": "Cepat dan Efisien",
+        "description": "Nikmati pembuatan konten yang cepat dan lancar dengan alat AI kami."
+      },
+      {
+        "icon": "ChartSplineIcon",
+        "title": "Analitik Mendalam",
+        "description": "Dapatkan wawasan berharga untuk memperkuat strategi media sosial Anda."
+      },
+      {
+        "icon": "LifeBuoyIcon",
+        "title": "Dukungan 24/7",
+        "description": "Tim kami siap membantu kapan saja untuk menjawab pertanyaan Anda."
+      },
+      {
+        "icon": "PaletteIcon",
+        "title": "Solusi Fleksibel",
+        "description": "Sesuaikan alat dan fitur sesuai kebutuhan media sosial Anda."
+      },
+      {
+        "icon": "ShieldCheckIcon",
+        "title": "Aman dan Terpercaya",
+        "description": "Platform kami menjamin keamanan data dan performa yang stabil."
+      },
+      {
+        "icon": "WaypointsIcon",
+        "title": "Integrasi Mudah",
+        "description": "Hubungkan dengan platform sosial yang sudah Anda gunakan dengan mudah."
+      }
+    ]
+  }
+      }
