@@ -1,234 +1,221 @@
-// src/config/content.ts
-
 import {
-    LucideIcon,
-    Coffee,
-    Wind,
-    Wifi,
-    Smile,
-    Award,
-    Leaf
+  LucideIcon,
+  Rocket,
+  Bot,
+  Smartphone,
+  PenTool,
+  Users,
+  Zap
 } from "lucide-react";
 
 // ===================================================================================
 // --- BAGIAN INI WAJIB ADA ---
-// Ini adalah definisi "kamus" atau "blueprint" untuk data kita.
+// Definisi "kamus" atau "blueprint" untuk data kita.
 // TypeScript memerlukan ini untuk memeriksa apakah data yang kita masukkan sudah benar.
 // ===================================================================================
 
 interface Plan {
-    id: 'basic' | 'pro' | 'enterprise';
-    title: string;
-    desc: string;
-    monthlyPrice: number;
-    badge?: string;
-    buttonText: string;
-    features: string[];
+  id: 'basic' | 'pro' | 'reseller';
+  title: string;
+  desc: string;
+  monthlyPrice: number;
+  badge?: string;
+  buttonText: string;
+  features: string[];
 }
 
 interface Perk {
-    title: string;
-    description: string;
-    icon: LucideIcon;
+  title: string;
+  description: string;
+  icon: LucideIcon;
 }
 
 interface Review {
-    img: string;
-    name: string;
-    username: string;
-    review: string;
-}
-
-interface PricingImage {
-    src: string;
-    alt: string;
-    name: string;
-    categoryId: string;
+  img: string;
+  name: string;
+  username: string;
+  review: string;
 }
 
 interface Faq {
-    question: string;
-    answer: string;
+  question: string;
+  answer: string;
 }
-
 
 // --- KONFIGURASI GLOBAL WEBSITE ---
 
 export const siteConfig = {
-    companyName: "Kopi Senja",
-    contactEmail: "halo@kopisenja.id",
-    copyright: `© ${new Date().getFullYear()} Kopi Senja. All rights reserved.`,
-    currency: "Rp",
-    orderBasePath: "/pesan-online",
+  companyName: "Bisnovo",
+  contactEmail: "halo@bisnovo.id",
+  copyright: `© ${new Date().getFullYear()} Bisnovo. All rights reserved.`,
+  currency: "Rp",
+  orderBasePath: "/pesan-sekarang",
 };
-
 
 // --- KONTEN HALAMAN MARKETING ---
 
 // 1. Hero Section
 export const heroContent = {
-    badge: {
-        mainText: "Diskon Spesial Hari Ini!",
-        subText: "Lihat Promo"
-    },
-    headline: "Secangkir Ketenangan\n di Setiap Tegukan",
-    subheadline: `Nikmati kopi terbaik dari biji pilihan dan suasana hangat di ${siteConfig.companyName}. Tempat sempurna untuk bersantai atau bekerja.`,
-    ctaPrimary: {
-        text: "Lihat Menu Kami",
-        href: "/menu"
-    },
-    ctaSecondary: {
-        text: "Kunjungi Kami",
-        href: "/lokasi"
-    }
+  badge: {
+    mainText: "Mulai Bisnis Online Hari Ini!",
+    subText: "Lihat Paket Kami",
+  },
+  headline: "Jualan Online Jadi Gampang\ndengan Bisnovo",
+  subheadline: `Bangun bisnis digitalmu tanpa ribet dengan ${siteConfig.companyName}. Dapatkan website, chatbot, dan konten siap pakai untuk mulai jualan hari ini!`,
+  ctaPrimary: {
+    text: "Lihat Paket Kami",
+    href: "/paket",
+  },
+  ctaSecondary: {
+    text: "Gabung Reseller",
+    href: "/reseller",
+  },
 };
 
-// 2. Perks Section -> Diubah menjadi "Keunggulan Kami"
+// 2. Perks Section -> "Keunggulan Bisnovo"
 export const perksContent = {
-    badge: "Keunggulan Kami",
-    headline: "Lebih dari Sekadar Kopi",
-    subheadline: `Kami bangga menyajikan pengalaman terbaik bagi setiap pelanggan yang datang ke ${siteConfig.companyName}.`,
-    perks: [
-        {
-            title: "Biji Kopi Premium",
-            description: "Kami hanya menggunakan biji kopi grade A dari dataran tinggi Indonesia untuk rasa yang otentik.",
-            icon: Leaf,
-        },
-        {
-            title: "Suasana Nyaman",
-            description: "Desain interior yang hangat dan musik yang menenangkan, cocok untuk fokus bekerja atau sekadar bersantai.",
-            icon: Wind,
-        },
-        {
-            title: "Wi-Fi Super Cepat",
-            description: "Tetap produktif dengan koneksi internet gratis dan kencang untuk semua pengunjung.",
-            icon: Wifi,
-        },
-        {
-            title: "Barista Berpengalaman",
-            description: "Staf kami yang ramah dan terlatih siap menyajikan kopi terbaik sesuai selera Anda.",
-            icon: Smile,
-        },
-        {
-            title: "Banyak Penghargaan",
-            description: "Terpilih sebagai kedai kopi favorit oleh komunitas dan berbagai penghargaan kuliner.",
-            icon: Award,
-        },
-        {
-            title: "Harga Terjangkau",
-            description: "Kualitas premium tidak harus mahal. Nikmati kopi terbaik dengan harga yang bersahabat.",
-            icon: Coffee,
-        },
-    ] as Perk[] // <-- TypeScript sekarang akan mengenali 'Perk' dari definisi di atas
+  badge: "Keunggulan Bisnovo",
+  headline: "Semua yang Kamu Butuh untuk Jualan Online",
+  subheadline: `Dengan ${siteConfig.companyName}, kamu mendapatkan solusi lengkap untuk memulai bisnis digital tanpa perlu paham teknis.`,
+  perks: [
+    {
+      title: "Website Profesional",
+      description: "Website responsif dan cepat, siap pakai dengan brandmu sendiri, dilengkapi fitur keranjang dan CTA WhatsApp.",
+      icon: Rocket,
+    },
+    {
+      title: "Chatbot 24/7",
+      description: "Otomatis jawab pertanyaan pelanggan di WhatsApp dan Instagram, bantu jualan kapan saja.",
+      icon: Bot,
+    },
+    {
+      title: "Konten Sosial Media",
+      description: "30 hari desain dan caption siap posting untuk Instagram dan TikTok, cocok untuk branding.",
+      icon: Smartphone,
+    },
+    {
+      title: "Copywriting Menarik",
+      description: "Kalimat promosi yang memikat, template DM, dan penawaran yang sudah teruji.",
+      icon: PenTool,
+    },
+    {
+      title: "Strategi Promosi",
+      description: "Panduan langkah demi langkah untuk promosi organik, tanpa perlu iklan mahal.",
+      icon: Zap,
+    },
+    {
+      title: "Reseller Tanpa Modal",
+      description: "Gabung gratis, dapat website jualan, dan komisi hingga Rp50.000 per penjualan.",
+      icon: Users,
+    },
+  ] as Perk[],
 };
-
 
 // 3. Reviews Section
 export const reviewsContent = {
-    badge: "Kata Pelanggan",
-    headline: "Apa Kata Mereka Tentang Kami",
-    subheadline: "Kami senang bisa menjadi bagian dari hari-hari mereka. Lihat cerita dari para pelanggan setia kami.",
-    reviews: [
-        {
-            img: "https://i.pravatar.cc/150?u=budi",
-            name: "Budi Santoso",
-            username: "@budifoodie",
-            review: "Cappuccino di Kopi Senja terenak yang pernah saya coba! Tempatnya juga cozy banget buat kerja.",
-        },
-        {
-            img: "https://i.pravatar.cc/150?u=siti",
-            name: "Siti Aminah",
-            username: "@sitijalan",
-            review: "Suka banget sama Americano-nya, pas! Baristanya ramah-ramah, jadi betah nongkrong lama.",
-        },
-        {
-            img: "https://i.pravatar.cc/150?u=dewi",
-            name: "Dewi Lestari",
-            username: "@dewibaca",
-            review: "Tempat favorit buat nulis sambil minum kopi. Wi-Fi kencang, suasananya mendukung buat fokus.",
-        },
-        {
-            img: "https://i.pravatar.cc/150?u=eko",
-            name: "Eko Prasetyo",
-            username: "@ekongopi",
-            review: "Sebagai penikmat kopi, saya akui biji kopi mereka berkualitas. Wajib coba V60-nya!",
-        },
-    ] as Review[] // <-- TypeScript sekarang akan mengenali 'Review'
+  badge: "Kata Pelanggan",
+  headline: "Cerita Sukses Bersama Bisnovo",
+  subheadline: "Lihat bagaimana Bisnovo membantu ribuan orang memulai bisnis online mereka dengan mudah.",
+  reviews: [
+    {
+      img: "https://i.pravatar.cc/150?u=ani",
+      name: "Ani Rahayu",
+      username: "@aniolshop",
+      review: "Paket dari Bisnovo bikin jualan onlineku langsung jalan! Website dan chatbotnya super membantu, pelanggan jadi lebih mudah beli.",
+    },
+    {
+      img: "https://i.pravatar.cc/150?u=rio",
+      name: "Rio Pratama",
+      username: "@riojualan",
+      review: "Sebagai reseller, saya bisa dapat penghasilan tambahan tanpa modal. Tim Bisnovo support banget!",
+    },
+    {
+      img: "https://i.pravatar.cc/150?u=sari",
+      name: "Sari Wulandari",
+      username: "@sarifashion",
+      review: "Konten sosial media dari Bisnovo bikin Instagramku lebih hidup. Penjualan naik dalam sebulan!",
+    },
+    {
+      img: "https://i.pravatar.cc/150?u=dedi",
+      name: "Dedi Setiawan",
+      username: "@dedibisnis",
+      review: "Strategi promosinya gampang diikuti, cocok buat pemula kayak saya. Sekarang bisnis onlineku mulai ramai!",
+    },
+  ] as Review[],
 };
 
-
-// 4. Pricing Section -> Diubah menjadi "Paket Spesial"
+// 4. Pricing Section -> "Paket Bisnovo"
 export const pricingContent = {
-    badge: "Paket Spesial",
-    headline: "Nikmati Lebih, Hemat Lebih",
-    subheadline: "Pilih paket hemat kami untuk menemani harimu, baik sendiri maupun bersama teman.",
-    orderButtonText: "Pesan Paket Ini",
-    plans: [
-        {
-            id: 'basic',
-            title: "Paket Santai",
-            desc: "Sempurna untuk menikmati waktu sendiri dengan secangkir kopi dan camilan ringan.",
-            monthlyPrice: 50,
-            buttonText: "Pilih Paket Santai",
-            features: [
-                "1 Kopi Pilihan (All Variants)",
-                "1 Pastry (Croissant/Donat)",
-                "Air Mineral Gratis"
-            ],
-        },
-        {
-            id: 'pro',
-            title: "Paket Kerja",
-            desc: "Untuk kamu yang butuh fokus dan energi ekstra saat bekerja di kafe kami.",
-            monthlyPrice: 75,
-            badge: "Paling Laris",
-            buttonText: "Pilih Paket Kerja",
-            features: [
-                "2 Kopi Pilihan (All Variants)",
-                "1 Makanan Berat (Nasi Goreng)",
-                "Voucher Wi-Fi Premium 2 Jam"
-            ],
-        },
-        {
-            id: 'enterprise',
-            title: "Paket Ramean",
-            desc: "Ajak teman-temanmu dan nikmati kebersamaan dengan paket super hemat untuk berempat.",
-            monthlyPrice: 150,
-            buttonText: "Pilih Paket Ramean",
-            features: [
-                "4 Kopi Pilihan (All Variants)",
-                "2 Kentang Goreng",
-                "1 Pizza Ukuran Medium"
-            ],
-        },
-    ] as Plan[], // <-- TypeScript sekarang akan mengenali 'Plan'
-    images: [
-        { src: "/images/kopi-susu.png", alt: "Kopi Susu Gula Aren", name: "Kopi Susu Gula Aren", categoryId: "kopi-susu" },
-        { src: "/images/croissant.png", alt: "Croissant Cokelat", name: "Croissant Cokelat", categoryId: "croissant" },
-        { src: "/images/v60.png", alt: "Manual Brew V60", name: "Manual Brew V60", categoryId: "v60" },
-    ] as PricingImage[] // <-- TypeScript sekarang akan mengenali 'PricingImage'
+  badge: "Paket Bisnovo",
+  headline: "Pilih Paket untuk Bisnismu",
+  subheadline: "Dapatkan semua yang kamu butuh untuk jualan online dengan harga terjangkau, sekali bayar.",
+  orderButtonText: "Pesan Paket Ini",
+  plans: [
+    {
+      id: 'basic',
+      title: "Paket Starter",
+      desc: "Cocok untuk pemula yang ingin mulai jualan online dengan cepat dan hemat.",
+      monthlyPrice: 200,
+      buttonText: "Pilih Paket Starter",
+      features: [
+        "Website Bisnis Siap Pakai",
+        "Chatbot WhatsApp",
+        "Konten Sosial Media 15 Hari",
+        "Template Copywriting Dasar",
+        "Panduan Promosi Dasar",
+      ],
+    },
+    {
+      id: 'pro',
+      title: "Paket Pro",
+      desc: "Solusi lengkap untuk UMKM yang ingin bisnis online-nya lebih profesional.",
+      monthlyPrice: 350,
+      badge: "Paling Populer",
+      buttonText: "Pilih Paket Pro",
+      features: [
+        "Website Bisnis Premium",
+        "Chatbot WhatsApp & Instagram",
+        "Konten Sosial Media 30 Hari",
+        "Template Copywriting Lengkap",
+        "Strategi Promosi + Booster",
+      ],
+    },
+    {
+      id: 'reseller',
+      title: "Paket Reseller",
+      desc: "Gabung gratis sebagai reseller, dapat website jualan, dan komisi per penjualan.",
+      monthlyPrice: 0,
+      buttonText: "Gabung Reseller",
+      features: [
+        "Website Reseller Pribadi",
+        "Komisi Rp20.000–Rp50.000/Penjualan",
+        "Support Tim Bisnovo",
+        "Panduan Jualan Reseller",
+        "Akses Materi Promosi",
+      ],
+    },
+  ] as Plan[],
 };
-
 
 // 5. Footer Section
 export const footerContent = {
-    faqHeadline: "Pertanyaan Umum",
-    faqs: [
-        {
-            question: "Di mana lokasi Kopi Senja?",
-            answer: `Kami berada di Jl. Kenangan No. 123, Jakarta. Anda bisa menemukan kami di Google Maps dengan mencari "${siteConfig.companyName}".`
-        },
-        {
-            question: "Apa saja jam buka kedai?",
-            answer: "Kami buka setiap hari dari jam 08:00 pagi hingga 22:00 malam."
-        },
-        {
-            question: "Apakah tersedia area outdoor atau smoking area?",
-            answer: "Ya, kami menyediakan area outdoor yang nyaman di bagian belakang kedai yang juga bisa digunakan sebagai smoking area."
-        },
-        {
-            question: "Bagaimana cara menghubungi untuk reservasi?",
-            answer: `Anda bisa menghubungi kami melalui email di ${siteConfig.contactEmail} atau telepon di nomor yang tertera di halaman kontak kami.`
-        }
-    ] as Faq[] // <-- TypeScript sekarang akan mengenali 'Faq'
+  faqHeadline: "Pertanyaan Umum",
+  faqs: [
+    {
+      question: "Apa itu Bisnovo?",
+      answer: `Bisnovo adalah penyedia jasa setup bisnis online lengkap, membantu pemula dan UMKM membangun bisnis digital dengan website, chatbot, dan konten siap pakai.`,
+    },
+    {
+      question: "Bagaimana cara memesan paket?",
+      answer: `Kunjungi halaman paket, pilih paket yang diinginkan, dan ikuti langkah pemesanan di ${siteConfig.orderBasePath}. Tim kami akan segera menghubungi Anda.`,
+    },
+    {
+      question: "Apa saja keuntungan jadi reseller?",
+      answer: "Reseller Bisnovo bisa bergabung gratis, mendapatkan website jualan sendiri, dan komisi hingga Rp50.000 per penjualan tanpa perlu modal.",
+    },
+    {
+      question: "Berapa lama setup website selesai?",
+      answer: "Website bisnis Anda akan siap dalam 1–3 hari kerja setelah pemesanan dan konfirmasi detail brand Anda.",
+    },
+  ] as Faq[],
 };
