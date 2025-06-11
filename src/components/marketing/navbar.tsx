@@ -3,14 +3,14 @@
 import Link from 'next/link'
 import { useState } from 'react'
 import { Menu, X } from 'lucide-react'
-// Pastikan path ke Button sudah benar, jika Anda menggunakannya.
-// import { Button } from '@/components/ui/button' 
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
 
   // Fungsi untuk menangani smooth scroll
-  const handleScroll = (e) => {
+  // --- REVISI DI SINI ---
+  // Menambahkan tipe data untuk parameter 'e' untuk mengatasi error TypeScript
+  const handleScroll = (e: React.MouseEvent<HTMLAnchorElement>) => {
     // 1. Mencegah perilaku default dari link
     e.preventDefault();
 
@@ -61,10 +61,9 @@ export default function Navbar() {
             >
               Home
             </Link>
-            {/* --- REVISI DI SINI --- */}
             <Link
               href="#pricing"
-              onClick={handleScroll} // Tambahkan onClick handler
+              onClick={handleScroll} 
               className="text-sm font-medium text-white hover:text-primary transition-colors"
             >
               Product
@@ -86,10 +85,9 @@ export default function Navbar() {
                 </Link>
               </li>
               <li>
-                {/* --- REVISI DI SINI --- */}
                 <Link
                   href="#pricing"
-                  onClick={handleScroll} // Tambahkan onClick handler
+                  onClick={handleScroll}
                   className="block text-sm font-medium hover:text-primary transition-colors"
                 >
                   Product
