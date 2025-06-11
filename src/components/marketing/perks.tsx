@@ -1,4 +1,6 @@
-import { PERKS } from "@/constants";
+// src/components/marketing/perks.tsx
+
+import { perksContent } from "@/config/content"; // <-- IMPORT
 import { cn } from "@/functions";
 import { LucideIcon } from "lucide-react";
 import Container from "../global/container";
@@ -9,19 +11,19 @@ const Perks = () => {
         <div className="flex flex-col items-center justify-center py-12 md:py-16 lg:py-24 w-full">
             <Container>
                 <div className="flex flex-col items-center text-center max-w-2xl mx-auto">
-                    <SectionBadge title="Perks" />
+                    <SectionBadge title={perksContent.badge} /> {/* <-- GANTI */}
                     <h2 className="text-2xl md:text-4xl lg:text-5xl font-heading font-medium !leading-snug mt-6">
-                        Discover the benefits
+                        {perksContent.headline} {/* <-- GANTI */}
                     </h2>
                     <p className="text-base md:text-lg text-center text-accent-foreground/80 mt-6">
-                        Explore the powerful features and advantages that Luro offer to help you grow your social media presence
+                        {perksContent.subheadline} {/* <-- GANTI */}
                     </p>
                 </div>
             </Container>
             <Container>
                 <div className="mt-16 w-full">
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 w-full relative">
-                        {PERKS.map((perk, index) => (
+                        {perksContent.perks.map((perk, index) => ( // <-- GANTI
                             <Perk key={index} index={index} {...perk} />
                         ))}
                     </div>
@@ -42,8 +44,9 @@ const Perk = ({
     icon: LucideIcon;
     index: number;
 }) => {
+    // ... (Isi komponen Perk tidak perlu diubah)
     return (
-        <div
+         <div
             className={cn(
                 "flex flex-col lg:border-r transform-gpu py-10 relative group/feature border-neutral-800",
                 (index === 0 || index === 3) && "lg:border-l",
