@@ -1,34 +1,23 @@
+// src/components/marketing/pricing.tsx
+
 "use client";
 
-import { PLANS } from "@/constants"; // Pastikan path ini benar
-import { cn } from "@/functions"; // Pastikan path ini benar
-// AnimatePresence dan motion mungkin masih digunakan di Plan
-// import { AnimatePresence, motion } from "framer-motion";
-import { CheckIcon } from "lucide-react"; // ChevronLeft & ChevronRight tidak lagi dibutuhkan
+import { pricingContent, siteConfig } from "@/config/content"; // <-- IMPORT
+import { cn } from "@/functions"; 
+import { CheckIcon } from "lucide-react";
 import Link from "next/link";
-import Container from "../global/container"; // Pastikan path ini benar
-import { Button } from "../ui/button"; // Pastikan path ini benar
-import NumberTicker from "../ui/number-ticker"; // Pastikan path ini benar
-import { SectionBadge } from "../ui/section-bade"; // Pastikan path ini benar
-import Image from "next/image";
 import { useState } from "react";
+import Container from "../global/container";
+import { Button } from "../ui/button";
+import NumberTicker from "../ui/number-ticker";
+import { SectionBadge } from "../ui/section-bade";
+import Image from "next/image";
 
 const Pricing = () => {
-    const filteredPlans = PLANS.filter(plan => plan.id !== "enterprise");
-
-    const images = [
-        { src: "/images/toko-online.png", alt: "Toko Online", name: "Toko Online", categoryId: "toko-online" },
-        { src: "/images/landing-page-jasa.png", alt: "Landing Page Jasa", name: "LP Jasa", categoryId: "landing-jasa" }, // Nama disingkat
-        { src: "/images/portofolio-pribadi.png", alt: "Portofolio Pribadi", name: "Portofolio", categoryId: "portofolio" }, // Nama disingkat
-        { src: "/images/company-profile.png", alt: "Company Profile", name: "Company Profile", categoryId: "company-profile" },
-        { src: "/images/blog.png", alt: "Blog", name: "Blog Web", categoryId: "blog" }, // Sedikit diubah agar unik jika ada plan "Blog"
-    ];
+    const filteredPlans = pricingContent.plans.filter(plan => plan.id !== "enterprise");
+    const images = pricingContent.images; // <-- Gunakan dari config
 
     const [currentIndex, setCurrentIndex] = useState(0);
-
-    // Fungsi nextSlide dan prevSlide tidak lagi dibutuhkan jika navigasi hanya via tombol nama
-    // const nextSlide = () => { ... };
-    // const prevSlide = () => { ... };
 
     const handleNavigationClick = (index: number) => {
         setCurrentIndex(index);
@@ -40,12 +29,12 @@ const Pricing = () => {
         <div className="flex flex-col items-center justify-center py-12 md:py-16 lg:py-24 w-full relative">
             <Container className="overflow-x-hidden">
                 <div className="flex flex-col items-center text-center max-w-xl mx-auto">
-                    <SectionBadge title="Pilih Paket Anda" />
+                    <SectionBadge title={pricingContent.badge} /> {/* <-- GANTI */}
                     <h2 className="text-2xl md:text-4xl lg:text-5xl font-heading font-medium !leading-snug mt-6">
-                        Harga Simpel dan Transparan
+                        {pricingContent.headline} {/* <-- GANTI */}
                     </h2>
                     <p className="text-base md:text-lg text-center text-accent-foreground/80 mt-6">
-                        Pilih paket yang sesuai dengan kebutuhan website Anda. Tanpa biaya tersembunyi.
+                        {pricingContent.subheadline} {/* <-- GANTI */}
                     </p>
                 </div>
             </Container>
@@ -97,8 +86,8 @@ const Pricing = () => {
                                                     size="sm"
                                                     className="whitespace-nowrap px-3 py-1.5 sm:px-4"
                                                 >
-                                                    <Link href={`/order?service=${image.categoryId}`}>
-                                                        Pesan Sekarang
+                                                    <Link href={`${siteConfig.orderBasePath}?service=${image.categoryId}`}> {/* <-- GANTI */}
+                                                        {pricingContent.orderButtonText} {/* <-- GANTI */}
                                                     </Link>
                                                 </Button>
                                             </div>
@@ -108,21 +97,20 @@ const Pricing = () => {
                             </div>
                         </div>
 
-                        {/* Tombol Navigasi Nama Jenis Website (Pengganti tombol Sebelum/Berikutnya) */}
                         <div className="flex flex-wrap justify-center items-center gap-2 sm:gap-3 mt-6 px-1">
                             {images.map((image, index) => (
                                 <Button
                                     key={image.categoryId}
                                     variant={currentIndex === index ? "default" : "outline"}
-                                    size="sm" // Ukuran tombol dikecilkan
+                                    size="sm" 
                                     onClick={() => handleNavigationClick(index)}
                                     className={cn(
                                         "transition-all duration-200 ease-in-out",
-                                        "text-xs sm:text-sm leading-tight", // Ukuran teks dan line-height disesuaikan
-                                        "h-auto px-2.5 py-1.5 sm:px-3 sm:py-2", // Padding disesuaikan agar tombol tidak terlalu tinggi
-                                        currentIndex === index ? "shadow-md ring-2 ring-primary ring-offset-background ring-offset-2" : "hover:bg-accent hover:text-accent-foreground" // Efek untuk tombol aktif
+                                        "text-xs sm:text-sm leading-tight",
+                                        "h-auto px-2.5 py-1.5 sm:px-3 sm:py-2",
+                                        currentIndex === index ? "shadow-md ring-2 ring-primary ring-offset-background ring-offset-2" : "hover:bg-accent hover:text-accent-foreground"
                                     )}
-                                    style={{ minWidth: 'fit-content' }} // Memastikan lebar tombol pas dengan kontennya
+                                    style={{ minWidth: 'fit-content' }}
                                 >
                                     {image.name}
                                 </Button>
@@ -135,7 +123,6 @@ const Pricing = () => {
     );
 };
 
-// Komponen Plan tetap sama seperti sebelumnya
 const Plan = ({
     id,
     title,
@@ -186,10 +173,7 @@ const Plan = ({
                     <div className="flex flex-col items-start gap-1">
                         <div className="flex items-end gap-1">
                             <span className="text-3xl md:text-4xl font-bold text-foreground">
-                                Rp{displayedPrice === 0 ? "0" : <NumberTicker value={displayedPrice * 1000} />}
-                            </span>
-                            <span className="text-base sm:text-lg text-muted-foreground font-medium font-heading">
-                                {/* /bulan */}
+                                {siteConfig.currency}{displayedPrice === 0 ? "0" : <NumberTicker value={displayedPrice * 1000} />} {/* <-- GANTI */}
                             </span>
                         </div>
                     </div>
@@ -211,7 +195,7 @@ const Plan = ({
                         className="w-full text-sm sm:text-base"
                         size="lg"
                     >
-                        <Link href={`/order?plan=${id}`}>
+                        <Link href={`${siteConfig.orderBasePath}?plan=${id}`}> {/* <-- GANTI */}
                             {buttonText}
                         </Link>
                     </Button>
