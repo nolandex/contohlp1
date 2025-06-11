@@ -1,10 +1,15 @@
 import "@/styles/globals.css";
-import { cn, generateMetadata } from "@/functions";
-import { inter, satoshi } from "@/constants"; // Pastikan ini sesuai dengan fonts.ts
+// 'generateMetadata' sudah dihapus dari import ini
+import { cn } from "@/functions"; 
+import { inter, satoshi } from "@/constants";
 import { Toaster } from "@/components/ui/sonner";
 import { Providers } from "@/components";
 
-export const metadata = generateMetadata();
+// Objek metadata baru ditambahkan langsung di sini
+export const metadata = {
+  title: "Bisnovo - Mulai Bisnis Online dengan Cepat dan Lengkap",
+  description: "Bisnovo membantu Anda membuat bisnis online lengkap — dari website, chatbot, konten sosmed, hingga sosmed booster untuk meningkatkan penjualan.",
+};
 
 export default function RootLayout({
     children,
@@ -12,12 +17,13 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <html lang="en" suppressHydrationWarning>
+        // Bahasa diubah ke "id" untuk konten Indonesia
+        <html lang="id" suppressHydrationWarning> 
             <body
                 className={cn(
                     "min-h-screen bg-background text-foreground antialiased font-default overflow-x-hidden !scrollbar-hide",
-                    inter.variable, // Gunakan variable untuk Inter
-                    satoshi.variable // Gunakan variable untuk Poppins (satoshi)
+                    inter.variable,
+                    satoshi.variable
                 )}
             >
                 <Toaster
