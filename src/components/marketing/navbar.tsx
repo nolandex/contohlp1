@@ -37,16 +37,10 @@ export default function Navbar() {
               Home
             </Link>
             <Link
-              href="/"
+              href="/pricing#pricing"
               className="text-sm font-medium text-white hover:text-primary transition-colors"
             >
               Price
-            </Link>
-            <Link
-              href="/pricing"
-              className="text-sm font-medium text-white hover:text-primary transition-colors"
-            >
-              Pricing
             </Link>
           </div>
         </div>
@@ -66,20 +60,11 @@ export default function Navbar() {
               </li>
               <li>
                 <Link
-                  href="/"
+                  href="/pricing#pricing"
                   onClick={() => setIsOpen(false)}
                   className="block text-sm font-medium hover:text-primary transition-colors"
                 >
                   Price
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/pricing"
-                  onClick={() => setIsOpen(false)}
-                  className="block text-sm font-medium hover:text-primary transition-colors"
-                >
-                  Pricing
                 </Link>
               </li>
             </ul>
