@@ -1,17 +1,8 @@
 // src/config/content.ts
-// FILE YANG SUDAH DIMODIFIKASI UNTUK KLIEN "KOPI SENJA"
 
 import {
-    ShieldCheck, // Icon lama, bisa dihapus jika tidak dipakai
-    Zap,         // Icon lama, bisa dihapus jika tidak dipakai
-    Rocket,      // Icon lama, bisa dihapus jika tidak dipakai
-    BarChart,    // Icon lama, bisa dihapus jika tidak dipakai
-    MessageSquare, // Icon lama, bisa dihapus jika tidak dipakai
-    Component,   // Icon lama, bisa dihapus jika tidak dipakai
     LucideIcon,
-
-    // --- Icon BARU untuk Kopi Senja ---
-    Coffee,      // <-- Tambahkan icon baru yang relevan
+    Coffee,
     Wind,
     Wifi,
     Smile,
@@ -19,22 +10,56 @@ import {
     Leaf
 } from "lucide-react";
 
-// --- TIPE DATA (Tidak perlu diubah) ---
-// ... (Interface Plan, Perk, Review, dll. tetap sama)
+// ===================================================================================
+// --- BAGIAN INI WAJIB ADA ---
+// Ini adalah definisi "kamus" atau "blueprint" untuk data kita.
+// TypeScript memerlukan ini untuk memeriksa apakah data yang kita masukkan sudah benar.
+// ===================================================================================
+
+interface Plan {
+    id: 'basic' | 'pro' | 'enterprise';
+    title: string;
+    desc: string;
+    monthlyPrice: number;
+    badge?: string;
+    buttonText: string;
+    features: string[];
+}
+
+interface Perk {
+    title: string;
+    description: string;
+    icon: LucideIcon;
+}
+
+interface Review {
+    img: string;
+    name: string;
+    username: string;
+    review: string;
+}
+
+interface PricingImage {
+    src: string;
+    alt: string;
+    name: string;
+    categoryId: string;
+}
+
+interface Faq {
+    question: string;
+    answer: string;
+}
+
 
 // --- KONFIGURASI GLOBAL WEBSITE ---
 
 export const siteConfig = {
-    // Nama perusahaan diganti
     companyName: "Kopi Senja",
-    // Email kontak diganti
     contactEmail: "halo@kopisenja.id",
-    // Copyright sekarang otomatis menggunakan nama perusahaan baru
     copyright: `© ${new Date().getFullYear()} Kopi Senja. All rights reserved.`,
-    // Mata uang tetap
     currency: "Rp",
-    // Path link order diubah agar sesuai
-    orderBasePath: "/pesan-online", 
+    orderBasePath: "/pesan-online",
 };
 
 
@@ -43,19 +68,17 @@ export const siteConfig = {
 // 1. Hero Section
 export const heroContent = {
     badge: {
-        mainText: "Diskon Spesial Hari Ini!", // Teks badge diubah
+        mainText: "Diskon Spesial Hari Ini!",
         subText: "Lihat Promo"
     },
-    // Headline utama diubah total
     headline: "Secangkir Ketenangan\n di Setiap Tegukan",
-    // Subheadline diubah untuk mencerminkan bisnis kopi
     subheadline: `Nikmati kopi terbaik dari biji pilihan dan suasana hangat di ${siteConfig.companyName}. Tempat sempurna untuk bersantai atau bekerja.`,
     ctaPrimary: {
-        text: "Lihat Menu Kami", // Tombol utama diubah
+        text: "Lihat Menu Kami",
         href: "/menu"
     },
     ctaSecondary: {
-        text: "Kunjungi Kami", // Tombol kedua diubah
+        text: "Kunjungi Kami",
         href: "/lokasi"
     }
 };
@@ -65,39 +88,38 @@ export const perksContent = {
     badge: "Keunggulan Kami",
     headline: "Lebih dari Sekadar Kopi",
     subheadline: `Kami bangga menyajikan pengalaman terbaik bagi setiap pelanggan yang datang ke ${siteConfig.companyName}.`,
-    // Semua "perks" diganti total agar sesuai dengan kedai kopi
     perks: [
         {
             title: "Biji Kopi Premium",
             description: "Kami hanya menggunakan biji kopi grade A dari dataran tinggi Indonesia untuk rasa yang otentik.",
-            icon: Leaf, // <-- Icon diganti
+            icon: Leaf,
         },
         {
             title: "Suasana Nyaman",
             description: "Desain interior yang hangat dan musik yang menenangkan, cocok untuk fokus bekerja atau sekadar bersantai.",
-            icon: Wind, // <-- Icon diganti
+            icon: Wind,
         },
         {
             title: "Wi-Fi Super Cepat",
             description: "Tetap produktif dengan koneksi internet gratis dan kencang untuk semua pengunjung.",
-            icon: Wifi, // <-- Icon diganti
+            icon: Wifi,
         },
         {
             title: "Barista Berpengalaman",
             description: "Staf kami yang ramah dan terlatih siap menyajikan kopi terbaik sesuai selera Anda.",
-            icon: Smile, // <-- Icon diganti
+            icon: Smile,
         },
         {
             title: "Banyak Penghargaan",
             description: "Terpilih sebagai kedai kopi favorit oleh komunitas dan berbagai penghargaan kuliner.",
-            icon: Award, // <-- Icon diganti
+            icon: Award,
         },
         {
             title: "Harga Terjangkau",
             description: "Kualitas premium tidak harus mahal. Nikmati kopi terbaik dengan harga yang bersahabat.",
-            icon: Coffee, // <-- Icon diganti
+            icon: Coffee,
         },
-    ] as Perk[]
+    ] as Perk[] // <-- TypeScript sekarang akan mengenali 'Perk' dari definisi di atas
 };
 
 
@@ -106,7 +128,6 @@ export const reviewsContent = {
     badge: "Kata Pelanggan",
     headline: "Apa Kata Mereka Tentang Kami",
     subheadline: "Kami senang bisa menjadi bagian dari hari-hari mereka. Lihat cerita dari para pelanggan setia kami.",
-    // Semua review diganti dengan testimoni tentang kopi
     reviews: [
         {
             img: "https://i.pravatar.cc/150?u=budi",
@@ -132,7 +153,7 @@ export const reviewsContent = {
             username: "@ekongopi",
             review: "Sebagai penikmat kopi, saya akui biji kopi mereka berkualitas. Wajib coba V60-nya!",
         },
-    ] as Review[]
+    ] as Review[] // <-- TypeScript sekarang akan mengenali 'Review'
 };
 
 
@@ -142,13 +163,12 @@ export const pricingContent = {
     headline: "Nikmati Lebih, Hemat Lebih",
     subheadline: "Pilih paket hemat kami untuk menemani harimu, baik sendiri maupun bersama teman.",
     orderButtonText: "Pesan Paket Ini",
-    // Semua "plans" diubah menjadi paket menu kopi
     plans: [
         {
             id: 'basic',
             title: "Paket Santai",
             desc: "Sempurna untuk menikmati waktu sendiri dengan secangkir kopi dan camilan ringan.",
-            monthlyPrice: 50, // Harga diubah (50.000)
+            monthlyPrice: 50,
             buttonText: "Pilih Paket Santai",
             features: [
                 "1 Kopi Pilihan (All Variants)",
@@ -160,7 +180,7 @@ export const pricingContent = {
             id: 'pro',
             title: "Paket Kerja",
             desc: "Untuk kamu yang butuh fokus dan energi ekstra saat bekerja di kafe kami.",
-            monthlyPrice: 75, // Harga diubah (75.000)
+            monthlyPrice: 75,
             badge: "Paling Laris",
             buttonText: "Pilih Paket Kerja",
             features: [
@@ -173,7 +193,7 @@ export const pricingContent = {
             id: 'enterprise',
             title: "Paket Ramean",
             desc: "Ajak teman-temanmu dan nikmati kebersamaan dengan paket super hemat untuk berempat.",
-            monthlyPrice: 150, // Harga diubah (150.000)
+            monthlyPrice: 150,
             buttonText: "Pilih Paket Ramean",
             features: [
                 "4 Kopi Pilihan (All Variants)",
@@ -181,20 +201,18 @@ export const pricingContent = {
                 "1 Pizza Ukuran Medium"
             ],
         },
-    ] as Plan[],
-    // Slider jenis website diubah menjadi gambar produk kopi
+    ] as Plan[], // <-- TypeScript sekarang akan mengenali 'Plan'
     images: [
         { src: "/images/kopi-susu.png", alt: "Kopi Susu Gula Aren", name: "Kopi Susu Gula Aren", categoryId: "kopi-susu" },
         { src: "/images/croissant.png", alt: "Croissant Cokelat", name: "Croissant Cokelat", categoryId: "croissant" },
         { src: "/images/v60.png", alt: "Manual Brew V60", name: "Manual Brew V60", categoryId: "v60" },
-    ] as PricingImage[]
+    ] as PricingImage[] // <-- TypeScript sekarang akan mengenali 'PricingImage'
 };
 
 
 // 5. Footer Section
 export const footerContent = {
     faqHeadline: "Pertanyaan Umum",
-    // Semua FAQ diganti agar relevan dengan kedai kopi
     faqs: [
         {
             question: "Di mana lokasi Kopi Senja?",
@@ -212,5 +230,5 @@ export const footerContent = {
             question: "Bagaimana cara menghubungi untuk reservasi?",
             answer: `Anda bisa menghubungi kami melalui email di ${siteConfig.contactEmail} atau telepon di nomor yang tertera di halaman kontak kami.`
         }
-    ] as Faq[]
+    ] as Faq[] // <-- TypeScript sekarang akan mengenali 'Faq'
 };
