@@ -1,21 +1,27 @@
+// src/config/content.ts
+
 import {
   LucideIcon,
-  Rocket,
-  Bot,
+  Coffee,
+  Globe,
+  MessageSquare,
   Smartphone,
-  PenTool,
+  TrendingUp,
+  FileText,
   Users,
-  Zap
+  Zap,
+  Award,
+  Clock
 } from "lucide-react";
 
 // ===================================================================================
 // --- BAGIAN INI WAJIB ADA ---
-// Definisi "kamus" atau "blueprint" untuk data kita.
+// Ini adalah definisi "kamus" atau "blueprint" untuk data kita.
 // TypeScript memerlukan ini untuk memeriksa apakah data yang kita masukkan sudah benar.
 // ===================================================================================
 
 interface Plan {
-  id: 'basic' | 'pro' | 'reseller';
+  id: 'basic' | 'pro' | 'enterprise';
   title: string;
   desc: string;
   monthlyPrice: number;
@@ -37,6 +43,13 @@ interface Review {
   review: string;
 }
 
+interface PricingImage {
+  src: string;
+  alt: string;
+  name: string;
+  categoryId: string;
+}
+
 interface Faq {
   question: string;
   answer: string;
@@ -46,7 +59,7 @@ interface Faq {
 
 export const siteConfig = {
   companyName: "Bisnovo",
-  contactEmail: "halo@bisnovo.id",
+  contactEmail: "hello@bisnovo.id",
   copyright: `© ${new Date().getFullYear()} Bisnovo. All rights reserved.`,
   currency: "Rp",
   orderBasePath: "/pesan-sekarang",
@@ -57,144 +70,152 @@ export const siteConfig = {
 // 1. Hero Section
 export const heroContent = {
   badge: {
-    mainText: "Mulai Bisnis Online Hari Ini!",
-    subText: "Lihat Paket Kami",
+    mainText: "Promo Launching!",
+    subText: "Lihat Penawaran"
   },
-  headline: "Jualan Online Jadi Gampang\ndengan Bisnovo",
-  subheadline: `Bangun bisnis digitalmu tanpa ribet dengan ${siteConfig.companyName}. Dapatkan website, chatbot, dan konten siap pakai untuk mulai jualan hari ini!`,
+  headline: "Bisnis Online Siap Jalan\nDalam 1 Hari Saja",
+  subheadline: `Dapatkan website, chatbot penjualan, dan konten media sosial siap pakai untuk memulai bisnis online Anda hari ini juga dengan ${siteConfig.companyName}.`,
   ctaPrimary: {
     text: "Lihat Paket Kami",
-    href: "/paket",
+    href: "/paket"
   },
   ctaSecondary: {
-    text: "Gabung Reseller",
-    href: "/reseller",
-  },
+    text: "Daftar Reseller",
+    href: "/reseller"
+  }
 };
 
-// 2. Perks Section -> "Keunggulan Bisnovo"
+// 2. Perks Section -> Diubah menjadi "Keunggulan Kami"
 export const perksContent = {
-  badge: "Keunggulan Bisnovo",
-  headline: "Semua yang Kamu Butuh untuk Jualan Online",
-  subheadline: `Dengan ${siteConfig.companyName}, kamu mendapatkan solusi lengkap untuk memulai bisnis digital tanpa perlu paham teknis.`,
+  badge: "Solusi Lengkap",
+  headline: "Semua yang Anda Butuhkan untuk Mulai Bisnis Online",
+  subheadline: `${siteConfig.companyName} menyediakan semua tools yang dibutuhkan untuk memulai bisnis online tanpa ribet dan mahal.`,
   perks: [
     {
       title: "Website Profesional",
-      description: "Website responsif dan cepat, siap pakai dengan brandmu sendiri, dilengkapi fitur keranjang dan CTA WhatsApp.",
-      icon: Rocket,
+      description: "Website responsive siap pakai dengan desain modern yang bisa langsung digunakan untuk jualan.",
+      icon: Globe,
     },
     {
-      title: "Chatbot 24/7",
-      description: "Otomatis jawab pertanyaan pelanggan di WhatsApp dan Instagram, bantu jualan kapan saja.",
-      icon: Bot,
+      title: "Chatbot Otomatis",
+      description: "Chatbot WhatsApp & Instagram yang bisa otomatis menangani penjualan 24/7 tanpa operator.",
+      icon: MessageSquare,
     },
     {
-      title: "Konten Sosial Media",
-      description: "30 hari desain dan caption siap posting untuk Instagram dan TikTok, cocok untuk branding.",
+      title: "Konten Media Sosial",
+      description: "30 hari konten siap posting untuk Instagram & TikTok termasuk desain dan caption menarik.",
       icon: Smartphone,
     },
     {
-      title: "Copywriting Menarik",
-      description: "Kalimat promosi yang memikat, template DM, dan penawaran yang sudah teruji.",
-      icon: PenTool,
+      title: "Strategi Marketing",
+      description: "Panduan lengkap promosi organik & berbayar yang sudah terbukti meningkatkan penjualan.",
+      icon: TrendingUp,
     },
     {
-      title: "Strategi Promosi",
-      description: "Panduan langkah demi langkah untuk promosi organik, tanpa perlu iklan mahal.",
-      icon: Zap,
+      title: "Copywriting Menjual",
+      description: "Template copywriting siap pakai yang sudah dioptimalkan untuk meningkatkan konversi penjualan.",
+      icon: FileText,
     },
     {
-      title: "Reseller Tanpa Modal",
-      description: "Gabung gratis, dapat website jualan, dan komisi hingga Rp50.000 per penjualan.",
+      title: "Sistem Reseller",
+      description: "Peluang penghasilan tambahan dengan menjadi reseller tanpa modal dan support penuh dari kami.",
       icon: Users,
     },
-  ] as Perk[],
+  ] as Perk[]
 };
 
 // 3. Reviews Section
 export const reviewsContent = {
-  badge: "Kata Pelanggan",
-  headline: "Cerita Sukses Bersama Bisnovo",
-  subheadline: "Lihat bagaimana Bisnovo membantu ribuan orang memulai bisnis online mereka dengan mudah.",
+  badge: "Testimoni",
+  headline: "Apa Kata Klien Kami",
+  subheadline: "Lihat bagaimana Bisnovo telah membantu ratusan pebisnis memulai usaha online mereka.",
   reviews: [
     {
-      img: "https://i.pravatar.cc/150?u=ani",
-      name: "Ani Rahayu",
-      username: "@aniolshop",
-      review: "Paket dari Bisnovo bikin jualan onlineku langsung jalan! Website dan chatbotnya super membantu, pelanggan jadi lebih mudah beli.",
+      img: "https://i.pravatar.cc/150?u=reseller1",
+      name: "Andi Wijaya",
+      username: "@andi_reseller",
+      review: "Dengan paket Bisnovo, saya bisa mulai jualan online hanya dalam 1 hari! Sekarang sudah punya 5 reseller bawahannya.",
     },
     {
-      img: "https://i.pravatar.cc/150?u=rio",
-      name: "Rio Pratama",
-      username: "@riojualan",
-      review: "Sebagai reseller, saya bisa dapat penghasilan tambahan tanpa modal. Tim Bisnovo support banget!",
+      img: "https://i.pravatar.cc/150?u=umkm1",
+      name: "Siti Rahayu",
+      username: "@siti_kue",
+      review: "Website dan chatbotnya sangat membantu. Orderan masuk terus bahkan saat saya tidur!",
     },
     {
-      img: "https://i.pravatar.cc/150?u=sari",
-      name: "Sari Wulandari",
-      username: "@sarifashion",
-      review: "Konten sosial media dari Bisnovo bikin Instagramku lebih hidup. Penjualan naik dalam sebulan!",
+      img: "https://i.pravatar.cc/150?u=mahasiswa1",
+      name: "Budi Santoso",
+      username: "@budi_startup",
+      review: "Sebagai mahasiswa, paket ini sangat terjangkau. Sekarang bisa punya penghasilan sendiri tanpa ganggu kuliah.",
     },
     {
-      img: "https://i.pravatar.cc/150?u=dedi",
-      name: "Dedi Setiawan",
-      username: "@dedibisnis",
-      review: "Strategi promosinya gampang diikuti, cocok buat pemula kayak saya. Sekarang bisnis onlineku mulai ramai!",
+      img: "https://i.pravatar.cc/150?u=irt1",
+      name: "Dewi Lestari",
+      username: "@dewi_catering",
+      review: "Dulu takut go-online karena tidak paham teknologi. Sekarang bisnis catering saya 80% order dari online!",
     },
-  ] as Review[],
+  ] as Review[]
 };
 
-// 4. Pricing Section -> "Paket Bisnovo"
+// 4. Pricing Section -> Diubah menjadi "Paket Kami"
 export const pricingContent = {
-  badge: "Paket Bisnovo",
-  headline: "Pilih Paket untuk Bisnismu",
-  subheadline: "Dapatkan semua yang kamu butuh untuk jualan online dengan harga terjangkau, sekali bayar.",
-  orderButtonText: "Pesan Paket Ini",
+  badge: "Paket Lengkap",
+  headline: "Hanya Rp200rb untuk Semua Ini",
+  subheadline: "Dapatkan semua yang Anda butuhkan untuk mulai bisnis online hari ini juga.",
+  orderButtonText: "Pesan Sekarang",
   plans: [
     {
       id: 'basic',
       title: "Paket Starter",
-      desc: "Cocok untuk pemula yang ingin mulai jualan online dengan cepat dan hemat.",
+      desc: "Solusi lengkap untuk memulai bisnis online Anda dengan cepat dan mudah.",
       monthlyPrice: 200,
-      buttonText: "Pilih Paket Starter",
+      buttonText: "Mulai Sekarang",
       features: [
-        "Website Bisnis Siap Pakai",
-        "Chatbot WhatsApp",
-        "Konten Sosial Media 15 Hari",
-        "Template Copywriting Dasar",
-        "Panduan Promosi Dasar",
+        "Website Profesional Siap Pakai",
+        "Chatbot WhatsApp & Instagram",
+        "30 Konten Media Sosial",
+        "Template Copywriting Menjual",
+        "Strategi Marketing Step-by-Step",
+        "Support 1 Minggu Gratis"
       ],
     },
     {
       id: 'pro',
-      title: "Paket Pro",
-      desc: "Solusi lengkap untuk UMKM yang ingin bisnis online-nya lebih profesional.",
-      monthlyPrice: 350,
-      badge: "Paling Populer",
-      buttonText: "Pilih Paket Pro",
+      title: "Paket Reseller",
+      desc: "Untuk Anda yang ingin jadi reseller dan dapat penghasilan tambahan.",
+      monthlyPrice: 0,
+      badge: "Tanpa Modal",
+      buttonText: "Daftar Reseller",
       features: [
-        "Website Bisnis Premium",
-        "Chatbot WhatsApp & Instagram",
-        "Konten Sosial Media 30 Hari",
-        "Template Copywriting Lengkap",
-        "Strategi Promosi + Booster",
+        "Website Jualan Sendiri",
+        "Komisi Rp20-50rb per Penjualan",
+        "Training & Support Lengkap",
+        "Tools Marketing Eksklusif",
+        "Akses ke Komunitas Reseller",
+        "Bisa Dijalankan Sampingan"
       ],
     },
     {
-      id: 'reseller',
-      title: "Paket Reseller",
-      desc: "Gabung gratis sebagai reseller, dapat website jualan, dan komisi per penjualan.",
-      monthlyPrice: 0,
-      buttonText: "Gabung Reseller",
+      id: 'enterprise',
+      title: "Paket Booster",
+      desc: "Tingkatkan penjualan dengan layanan premium dan iklan berbayar.",
+      monthlyPrice: 500,
+      buttonText: "Konsultasi Gratis",
       features: [
-        "Website Reseller Pribadi",
-        "Komisi Rp20.000–Rp50.000/Penjualan",
-        "Support Tim Bisnovo",
-        "Panduan Jualan Reseller",
-        "Akses Materi Promosi",
+        "Semua Fitur Paket Starter",
+        "Setup Iklan Facebook/Instagram",
+        "Optimasi SEO Website",
+        "Analytics & Reporting",
+        "Support 1 Bulan Prioritas",
+        "Konsultasi Bisnis Eksklusif"
       ],
     },
   ] as Plan[],
+  images: [
+    { src: "/images/website-demo.png", alt: "Contoh Website Bisnovo", name: "Website Bisnis", categoryId: "website" },
+    { src: "/images/chatbot-demo.png", alt: "Contoh Chatbot Bisnovo", name: "Chatbot Penjualan", categoryId: "chatbot" },
+    { src: "/images/content-demo.png", alt: "Contoh Konten Sosial Media", name: "Konten Media Sosial", categoryId: "content" },
+  ] as PricingImage[]
 };
 
 // 5. Footer Section
@@ -202,20 +223,20 @@ export const footerContent = {
   faqHeadline: "Pertanyaan Umum",
   faqs: [
     {
-      question: "Apa itu Bisnovo?",
-      answer: `Bisnovo adalah penyedia jasa setup bisnis online lengkap, membantu pemula dan UMKM membangun bisnis digital dengan website, chatbot, dan konten siap pakai.`,
+      question: "Berapa lama setup paketnya?",
+      answer: "Proses setup hanya membutuhkan waktu 6-24 jam setelah pembayaran diterima."
     },
     {
-      question: "Bagaimana cara memesan paket?",
-      answer: `Kunjungi halaman paket, pilih paket yang diinginkan, dan ikuti langkah pemesanan di ${siteConfig.orderBasePath}. Tim kami akan segera menghubungi Anda.`,
+      question: "Apakah perlu technical skill?",
+      answer: "Tidak sama sekali! Kami yang akan handle semua setup teknis untuk Anda."
     },
     {
-      question: "Apa saja keuntungan jadi reseller?",
-      answer: "Reseller Bisnovo bisa bergabung gratis, mendapatkan website jualan sendiri, dan komisi hingga Rp50.000 per penjualan tanpa perlu modal.",
+      question: "Bagaimana cara jadi reseller?",
+      answer: "Daftar gratis melalui form di halaman reseller, dan Anda akan mendapatkan akses ke semua tools yang dibutuhkan."
     },
     {
-      question: "Berapa lama setup website selesai?",
-      answer: "Website bisnis Anda akan siap dalam 1–3 hari kerja setelah pemesanan dan konfirmasi detail brand Anda.",
-    },
-  ] as Faq[],
-};
+      question: "Apakah ada garansi?",
+      answer: "Kami memberikan garansi 7 hari uang kembali jika Anda tidak puas dengan layanan kami."
+    }
+  ] as Faq[]
+}; 
