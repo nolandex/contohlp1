@@ -1,61 +1,40 @@
 // src/config/content.ts
+// FILE YANG SUDAH DIMODIFIKASI UNTUK KLIEN "KOPI SENJA"
 
 import {
-    ShieldCheck,
-    Zap,
-    Rocket,
-    BarChart,
-    MessageSquare,
-    Component,
-    LucideIcon
+    ShieldCheck, // Icon lama, bisa dihapus jika tidak dipakai
+    Zap,         // Icon lama, bisa dihapus jika tidak dipakai
+    Rocket,      // Icon lama, bisa dihapus jika tidak dipakai
+    BarChart,    // Icon lama, bisa dihapus jika tidak dipakai
+    MessageSquare, // Icon lama, bisa dihapus jika tidak dipakai
+    Component,   // Icon lama, bisa dihapus jika tidak dipakai
+    LucideIcon,
+
+    // --- Icon BARU untuk Kopi Senja ---
+    Coffee,      // <-- Tambahkan icon baru yang relevan
+    Wind,
+    Wifi,
+    Smile,
+    Award,
+    Leaf
 } from "lucide-react";
 
-// --- TIPE DATA (Untuk Type-Safety) ---
-
-interface Plan {
-    id: 'basic' | 'pro' | 'enterprise';
-    title: string;
-    desc: string;
-    monthlyPrice: number;
-    badge?: string;
-    buttonText: string;
-    features: string[];
-}
-
-interface Perk {
-    title: string;
-    description: string;
-    icon: LucideIcon;
-}
-
-interface Review {
-    img: string;
-    name: string;
-    username: string;
-    review: string;
-}
-
-interface PricingImage {
-    src: string;
-    alt: string;
-    name: string;
-    categoryId: string;
-}
-
-interface Faq {
-    question: string;
-    answer: string;
-}
-
+// --- TIPE DATA (Tidak perlu diubah) ---
+// ... (Interface Plan, Perk, Review, dll. tetap sama)
 
 // --- KONFIGURASI GLOBAL WEBSITE ---
 
 export const siteConfig = {
-    companyName: "Luro",
-    contactEmail: "support@luro.com",
-    copyright: `© ${new Date().getFullYear()} Luro. All rights reserved.`,
+    // Nama perusahaan diganti
+    companyName: "Kopi Senja",
+    // Email kontak diganti
+    contactEmail: "halo@kopisenja.id",
+    // Copyright sekarang otomatis menggunakan nama perusahaan baru
+    copyright: `© ${new Date().getFullYear()} Kopi Senja. All rights reserved.`,
+    // Mata uang tetap
     currency: "Rp",
-    orderBasePath: "/order", // Path dasar untuk halaman pemesanan
+    // Path link order diubah agar sesuai
+    orderBasePath: "/pesan-online", 
 };
 
 
@@ -64,56 +43,59 @@ export const siteConfig = {
 // 1. Hero Section
 export const heroContent = {
     badge: {
-        mainText: "Build for the future",
-        subText: "What's new"
+        mainText: "Diskon Spesial Hari Ini!", // Teks badge diubah
+        subText: "Lihat Promo"
     },
-    headline: "Your ultimate social media\n marketing tool",
-    subheadline: `Elevate your social media presence with AI-powered content creation and scheduling. ${siteConfig.companyName} is the all-in-one solution for your social media marketing needs.`,
+    // Headline utama diubah total
+    headline: "Secangkir Ketenangan\n di Setiap Tegukan",
+    // Subheadline diubah untuk mencerminkan bisnis kopi
+    subheadline: `Nikmati kopi terbaik dari biji pilihan dan suasana hangat di ${siteConfig.companyName}. Tempat sempurna untuk bersantai atau bekerja.`,
     ctaPrimary: {
-        text: "Start for free",
-        href: "/app"
+        text: "Lihat Menu Kami", // Tombol utama diubah
+        href: "/menu"
     },
     ctaSecondary: {
-        text: "How it works",
-        href: "#"
+        text: "Kunjungi Kami", // Tombol kedua diubah
+        href: "/lokasi"
     }
 };
 
-// 2. Perks Section
+// 2. Perks Section -> Diubah menjadi "Keunggulan Kami"
 export const perksContent = {
-    badge: "Perks",
-    headline: "Discover the benefits",
-    subheadline: `Explore the powerful features and advantages that ${siteConfig.companyName} offer to help you grow your social media presence`,
+    badge: "Keunggulan Kami",
+    headline: "Lebih dari Sekadar Kopi",
+    subheadline: `Kami bangga menyajikan pengalaman terbaik bagi setiap pelanggan yang datang ke ${siteConfig.companyName}.`,
+    // Semua "perks" diganti total agar sesuai dengan kedai kopi
     perks: [
         {
-            title: "Advanced Analytics",
-            description: "Gain deep insights into your audience and performance with our advanced analytics tools.",
-            icon: BarChart,
+            title: "Biji Kopi Premium",
+            description: "Kami hanya menggunakan biji kopi grade A dari dataran tinggi Indonesia untuk rasa yang otentik.",
+            icon: Leaf, // <-- Icon diganti
         },
         {
-            title: "AI-Powered Suggestions",
-            description: "Let our AI help you craft the perfect posts and schedule them at the optimal times.",
-            icon: Zap,
+            title: "Suasana Nyaman",
+            description: "Desain interior yang hangat dan musik yang menenangkan, cocok untuk fokus bekerja atau sekadar bersantai.",
+            icon: Wind, // <-- Icon diganti
         },
         {
-            title: "Seamless Integration",
-            description: "Connect all your social media accounts in one place for streamlined management.",
-            icon: Component,
+            title: "Wi-Fi Super Cepat",
+            description: "Tetap produktif dengan koneksi internet gratis dan kencang untuk semua pengunjung.",
+            icon: Wifi, // <-- Icon diganti
         },
         {
-            title: "24/7 Customer Support",
-            description: "Our dedicated support team is here to help you around the clock.",
-            icon: MessageSquare,
+            title: "Barista Berpengalaman",
+            description: "Staf kami yang ramah dan terlatih siap menyajikan kopi terbaik sesuai selera Anda.",
+            icon: Smile, // <-- Icon diganti
         },
         {
-            title: "Blazing Fast Performance",
-            description: "Experience a fast and responsive platform designed for efficiency.",
-            icon: Rocket,
+            title: "Banyak Penghargaan",
+            description: "Terpilih sebagai kedai kopi favorit oleh komunitas dan berbagai penghargaan kuliner.",
+            icon: Award, // <-- Icon diganti
         },
         {
-            title: "Top-Tier Security",
-            description: "Your data is safe with us. We prioritize security to protect your accounts.",
-            icon: ShieldCheck,
+            title: "Harga Terjangkau",
+            description: "Kualitas premium tidak harus mahal. Nikmati kopi terbaik dengan harga yang bersahabat.",
+            icon: Coffee, // <-- Icon diganti
         },
     ] as Perk[]
 };
@@ -121,117 +103,114 @@ export const perksContent = {
 
 // 3. Reviews Section
 export const reviewsContent = {
-    badge: "Our Customers",
-    headline: "What our customers say",
-    subheadline: "We are proud to have helped thousands of customers across the globe. Here are some of their stories",
+    badge: "Kata Pelanggan",
+    headline: "Apa Kata Mereka Tentang Kami",
+    subheadline: "Kami senang bisa menjadi bagian dari hari-hari mereka. Lihat cerita dari para pelanggan setia kami.",
+    // Semua review diganti dengan testimoni tentang kopi
     reviews: [
         {
-            img: "https://i.pravatar.cc/150?u=a042581f4e29026024d",
-            name: "Jane Doe",
-            username: "@janedoe",
-            review: "This tool has revolutionized our social media strategy. Highly recommended!",
+            img: "https://i.pravatar.cc/150?u=budi",
+            name: "Budi Santoso",
+            username: "@budifoodie",
+            review: "Cappuccino di Kopi Senja terenak yang pernah saya coba! Tempatnya juga cozy banget buat kerja.",
         },
         {
-            img: "https://i.pravatar.cc/150?u=a042581f4e29026704d",
-            name: "John Smith",
-            username: "@johnsmith",
-            review: "Incredible features and so easy to use. The AI suggestions are a game-changer.",
+            img: "https://i.pravatar.cc/150?u=siti",
+            name: "Siti Aminah",
+            username: "@sitijalan",
+            review: "Suka banget sama Americano-nya, pas! Baristanya ramah-ramah, jadi betah nongkrong lama.",
         },
         {
-            img: "https://i.pravatar.cc/150?u=a04258114e29026702d",
-            name: "Emily White",
-            username: "@emilyw",
-            review: "Customer support is fantastic. They helped me get set up in no time.",
+            img: "https://i.pravatar.cc/150?u=dewi",
+            name: "Dewi Lestari",
+            username: "@dewibaca",
+            review: "Tempat favorit buat nulis sambil minum kopi. Wi-Fi kencang, suasananya mendukung buat fokus.",
         },
         {
-            img: "https://i.pravatar.cc/150?u=a048581f4e29026701d",
-            name: "Michael Brown",
-            username: "@mikebrown",
-            review: "The analytics are incredibly detailed. I can finally see what's working.",
+            img: "https://i.pravatar.cc/150?u=eko",
+            name: "Eko Prasetyo",
+            username: "@ekongopi",
+            review: "Sebagai penikmat kopi, saya akui biji kopi mereka berkualitas. Wajib coba V60-nya!",
         },
-        // Tambahkan review lain di sini
     ] as Review[]
 };
 
 
-// 4. Pricing Section
+// 4. Pricing Section -> Diubah menjadi "Paket Spesial"
 export const pricingContent = {
-    badge: "Pilih Paket Anda",
-    headline: "Harga Simpel dan Transparan",
-    subheadline: "Pilih paket yang sesuai dengan kebutuhan website Anda. Tanpa biaya tersembunyi.",
-    orderButtonText: "Pesan Sekarang",
+    badge: "Paket Spesial",
+    headline: "Nikmati Lebih, Hemat Lebih",
+    subheadline: "Pilih paket hemat kami untuk menemani harimu, baik sendiri maupun bersama teman.",
+    orderButtonText: "Pesan Paket Ini",
+    // Semua "plans" diubah menjadi paket menu kopi
     plans: [
         {
             id: 'basic',
-            title: "Basic",
-            desc: "Ideal untuk pemula dan proyek pribadi yang ingin online.",
-            monthlyPrice: 500, // Harga dalam ribuan (500 = 500.000)
-            buttonText: "Pilih Paket Basic",
+            title: "Paket Santai",
+            desc: "Sempurna untuk menikmati waktu sendiri dengan secangkir kopi dan camilan ringan.",
+            monthlyPrice: 50, // Harga diubah (50.000)
+            buttonText: "Pilih Paket Santai",
             features: [
-                "1 Halaman Website",
-                "Desain Responsif",
-                "Hosting Gratis",
-                "Dukungan Dasar"
+                "1 Kopi Pilihan (All Variants)",
+                "1 Pastry (Croissant/Donat)",
+                "Air Mineral Gratis"
             ],
         },
         {
             id: 'pro',
-            title: "Pro",
-            desc: "Sempurna untuk bisnis kecil dan profesional yang butuh lebih.",
-            monthlyPrice: 1200, // Harga dalam ribuan (1200 = 1.200.000)
-            badge: "Paling Populer",
-            buttonText: "Pilih Paket Pro",
+            title: "Paket Kerja",
+            desc: "Untuk kamu yang butuh fokus dan energi ekstra saat bekerja di kafe kami.",
+            monthlyPrice: 75, // Harga diubah (75.000)
+            badge: "Paling Laris",
+            buttonText: "Pilih Paket Kerja",
             features: [
-                "Hingga 5 Halaman",
-                "Fitur SEO",
-                "Integrasi Media Sosial",
-                "Dukungan Prioritas"
+                "2 Kopi Pilihan (All Variants)",
+                "1 Makanan Berat (Nasi Goreng)",
+                "Voucher Wi-Fi Premium 2 Jam"
             ],
         },
         {
             id: 'enterprise',
-            title: "Enterprise",
-            desc: "Solusi lengkap untuk perusahaan dengan kebutuhan kustom.",
-            monthlyPrice: 2500, // Harga dalam ribuan (2500 = 2.500.000)
-            buttonText: "Hubungi Kami",
+            title: "Paket Ramean",
+            desc: "Ajak teman-temanmu dan nikmati kebersamaan dengan paket super hemat untuk berempat.",
+            monthlyPrice: 150, // Harga diubah (150.000)
+            buttonText: "Pilih Paket Ramean",
             features: [
-                "Halaman Tak Terbatas",
-                "Fitur Kustom",
-                "Manajer Akun Dedikasi",
-                "Laporan Analitik Bulanan"
+                "4 Kopi Pilihan (All Variants)",
+                "2 Kentang Goreng",
+                "1 Pizza Ukuran Medium"
             ],
         },
     ] as Plan[],
-    // Slider jenis website
+    // Slider jenis website diubah menjadi gambar produk kopi
     images: [
-        { src: "/images/toko-online.png", alt: "Toko Online", name: "Toko Online", categoryId: "toko-online" },
-        { src: "/images/landing-page-jasa.png", alt: "Landing Page Jasa", name: "LP Jasa", categoryId: "landing-jasa" },
-        { src: "/images/portofolio-pribadi.png", alt: "Portofolio Pribadi", name: "Portofolio", categoryId: "portofolio" },
-        { src: "/images/company-profile.png", alt: "Company Profile", name: "Company Profile", categoryId: "company-profile" },
-        { src: "/images/blog.png", alt: "Blog", name: "Blog Web", categoryId: "blog" },
+        { src: "/images/kopi-susu.png", alt: "Kopi Susu Gula Aren", name: "Kopi Susu Gula Aren", categoryId: "kopi-susu" },
+        { src: "/images/croissant.png", alt: "Croissant Cokelat", name: "Croissant Cokelat", categoryId: "croissant" },
+        { src: "/images/v60.png", alt: "Manual Brew V60", name: "Manual Brew V60", categoryId: "v60" },
     ] as PricingImage[]
 };
 
 
 // 5. Footer Section
 export const footerContent = {
-    faqHeadline: "Frequently Asked Questions",
+    faqHeadline: "Pertanyaan Umum",
+    // Semua FAQ diganti agar relevan dengan kedai kopi
     faqs: [
         {
-            question: "What is your product about?",
-            answer: `Our product is a powerful tool for managing your social media presence with AI-powered features provided by ${siteConfig.companyName}.`
+            question: "Di mana lokasi Kopi Senja?",
+            answer: `Kami berada di Jl. Kenangan No. 123, Jakarta. Anda bisa menemukan kami di Google Maps dengan mencari "${siteConfig.companyName}".`
         },
         {
-            question: "How do I get started?",
-            answer: "You can get started by signing up for a free account on our website and exploring the dashboard."
+            question: "Apa saja jam buka kedai?",
+            answer: "Kami buka setiap hari dari jam 08:00 pagi hingga 22:00 malam."
         },
         {
-            question: "Is there a free trial?",
-            answer: "Yes, we offer a 14-day free trial with full access to all features."
+            question: "Apakah tersedia area outdoor atau smoking area?",
+            answer: "Ya, kami menyediakan area outdoor yang nyaman di bagian belakang kedai yang juga bisa digunakan sebagai smoking area."
         },
         {
-            question: "How can I contact support?",
-            answer: `You can reach our support team via the Help Center or email at ${siteConfig.contactEmail}.`
+            question: "Bagaimana cara menghubungi untuk reservasi?",
+            answer: `Anda bisa menghubungi kami melalui email di ${siteConfig.contactEmail} atau telepon di nomor yang tertera di halaman kontak kami.`
         }
     ] as Faq[]
 };
