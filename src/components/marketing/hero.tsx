@@ -4,69 +4,101 @@ import { ArrowRightIcon } from "lucide-react";
 import Link from "next/link";
 import { BlurText } from "../ui/blur-text";
 import { Button } from "../ui/button";
+import siteContent from "../../data/site-content.json";
 
 const Hero = () => {
+  const heroContent = siteContent["Hero.tsx"].structure.container;
+
   return (
-    <div className="flex flex-col items-center text-center w-full max-w-5xl my-16 mx-auto z-40 relative px-4">
-      {/* Shiny animated badge */}
-      <div className="pl-2 pr-1 py-1 rounded-full border border-foreground/10 hover:border-foreground/15 backdrop-blur-lg cursor-pointer flex items-center gap-2.5 select-none w-max mx-auto">
-        <div className="w-3.5 h-3.5 rounded-full bg-primary/40 flex items-center justify-center relative">
-          <div className="w-2.5 h-2.5 rounded-full bg-primary/60 flex items-center justify-center animate-ping absolute"></div>
-          <div className="w-1.5 h-1.5 rounded-full bg-primary flex items-center justify-center absolute"></div>
+    <div className={heroContent.className}>
+      {/* Badge */}
+      <div className={heroContent.children[0].badge.className}>
+        <div className={heroContent.children[0].badge.children[0].indicator.className}>
+          <div
+            className={
+              heroContent.children[0].badge.children[0].indicator.children[0].ping.className
+            }
+          ></div>
+          <div
+            className={
+              heroContent.children[0].badge.children[0].indicator.children[1].dot.className
+            }
+          ></div>
         </div>
-        <span className="inline-flex items-center justify-center gap-2 bg-[linear-gradient(110deg,#b2a8fd,45%,#8678f9,55%,#c7d2fe)] bg-[length:200%_100%] bg-clip-text text-sm text-transparent animate-background-shine">
-          Build for the future
-          <span className="text-xs text-secondary-foreground px-1.5 py-0.5 rounded-full bg-gradient-to-b from-foreground/20 to-foreground/10 flex items-center justify-center">
-            What&apos;s new
-            <ArrowRightIcon className="w-3.5 h-3.5 ml-1 text-foreground/50" />
+        <span className={heroContent.children[0].badge.children[1].text.className}>
+          {heroContent.children[0].badge.children[1].text.content}
+          <span
+            className={heroContent.children[0].badge.children[1].text.badge.className}
+          >
+            {heroContent.children[0].badge.children[1].text.badge.content}
+            <ArrowRightIcon
+              className={
+                heroContent.children[0].badge.children[1].text.badge.icon.className
+              }
+            />
           </span>
         </span>
       </div>
 
-      {/* Main headline */}
+      {/* Headline */}
       <BlurText
-        word={"Your ultimate social media\n marketing tool"}
-        className="text-3xl sm:text-5xl lg:text-6xl xl:text-7xl bg-gradient-to-br from-foreground to-foreground/60 bg-clip-text text-transparent py-2 md:py-0 lg:!leading-snug font-medium mt-6 font-heading"
+        word={heroContent.children[1].headline.props.word}
+        className={heroContent.children[1].headline.props.className}
       />
 
       {/* Subtitle */}
-      <p className="text-sm sm:text-base lg:text-lg mt-4 text-accent-foreground/60 max-w-2xl mx-auto">
-        Elevate your social media presence with AI-powered content creation and scheduling.
-        <span className="hidden sm:inline"> Luro is the all-in-one solution for your social media marketing needs.</span>
+      <p className={heroContent.children[2].subtitle.className}>
+        {heroContent.children[2].subtitle.content}
       </p>
 
       {/* CTA Buttons */}
-      <div className="flex items-center justify-center md:gap-x-6 mt-8">
-        <Button asChild size="lg">
-          <Link href="/app" prefetch={false}>
-            Start for free
+      <div className={heroContent.children[3].ctaButtons.className}>
+        <Button
+          asChild
+          size={heroContent.children[3].ctaButtons.buttons[0].props.size}
+        >
+          <Link
+            href={heroContent.children[3].ctaButtons.buttons[0].link.href}
+            prefetch={heroContent.children[3].ctaButtons.buttons[0].link.prefetch}
+          >
+            {heroContent.children[3].ctaButtons.buttons[0].link.content}
           </Link>
         </Button>
-        <Button asChild size="lg" variant="outline" className="hidden md:flex">
-          <Link href="#" prefetch={false}>
-            How it works
+        <Button
+          asChild
+          size={heroContent.children[3].ctaButtons.buttons[1].props.size}
+          variant={heroContent.children[3].ctaButtons.buttons[1].props.variant}
+          className={heroContent.children[3].ctaButtons.buttons[1].props.className}
+        >
+          <Link
+            href={heroContent.children[3].ctaButtons.buttons[1].link.href}
+            prefetch={heroContent.children[3].ctaButtons.buttons[1].link.prefetch}
+          >
+            {heroContent.children[3].ctaButtons.buttons[1].link.content}
           </Link>
         </Button>
       </div>
 
-      {/* Dollar icon */}
-      <div className="mt-16 text-7xl font-bold text-primary animate-pulse" aria-hidden="true">
-        $
+      {/* Icon */}
+      <div
+        className={heroContent.children[4].dollarIcon.className}
+        aria-hidden={heroContent.children[4].dollarIcon["aria-hidden"]}
+      >
+        {heroContent.children[4].dollarIcon.content}
       </div>
 
-      {/* Extra styles for shine animation */}
+      {/* Styles */}
       <style jsx>{`
         @keyframes shine {
           0% {
-            background-position: 200% 0;
+            background-position: ${heroContent.children[5].styles.shineAnimation.keyframes["0%"]["background-position"]};
           }
           100% {
-            background-position: -200% 0;
+            background-position: ${heroContent.children[5].styles.shineAnimation.keyframes["100%"]["background-position"]};
           }
         }
-
-        .animate-background-shine {
-          animation: shine 4s linear infinite;
+        .${heroContent.children[5].styles.shineAnimation.className} {
+          animation: ${heroContent.children[5].styles.shineAnimation.animation};
         }
       `}</style>
     </div>
