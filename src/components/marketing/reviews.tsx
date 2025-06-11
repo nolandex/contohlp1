@@ -1,23 +1,25 @@
-import { REVIEWS } from "@/constants";
+// src/components/marketing/reviews.tsx
+
+import { reviewsContent } from "@/config/content"; // <-- IMPORT
 import Container from "../global/container";
 import Marquee from "../ui/marquee";
 import { SectionBadge } from "../ui/section-bade";
 import Image from "next/image";
 
-const firstRow = REVIEWS.slice(0, REVIEWS.length / 2);
-const secondRow = REVIEWS.slice(REVIEWS.length / 2);
+const firstRow = reviewsContent.reviews.slice(0, reviewsContent.reviews.length / 2); // <-- GANTI
+const secondRow = reviewsContent.reviews.slice(reviewsContent.reviews.length / 2); // <-- GANTI
 
 const Reviews = () => {
     return (
         <div className="flex flex-col items-center justify-center py-12 md:py-16 lg:py-24  w-full">
             <Container>
                 <div className="flex flex-col items-center text-center max-w-xl mx-auto">
-                    <SectionBadge title="Our Customers" />
+                    <SectionBadge title={reviewsContent.badge} /> {/* <-- GANTI */}
                     <h2 className="text-2xl md:text-4xl lg:text-5xl font-heading font-medium !leading-snug mt-6">
-                        What our customers say
+                        {reviewsContent.headline} {/* <-- GANTI */}
                     </h2>
                     <p className="text-base md:text-lg text-center text-accent-foreground/80 mt-6">
-                        We are proud to have helped thousands of customers across the globe. Here are some of their stories
+                        {reviewsContent.subheadline} {/* <-- GANTI */}
                     </p>
                 </div>
             </Container>
@@ -56,10 +58,11 @@ const ReviewCard = ({
     username: string;
     review: string;
 }) => {
+    // ... (Isi komponen ReviewCard tidak perlu diubah)
     return (
         <figure className="relative w-64 cursor-pointer overflow-hidden rounded-xl border border-foreground/5 bg-neutral-50/[.05] hover:bg-foreground/10 p-4 transition-all duration-300 ease-in-out">
             <div className="flex flex-row items-center gap-2">
-                <Image className="rounded-full" width="32" height="32" alt="" src={img} />
+                <Image className="rounded-full" width="32" height="32" alt={name} src={img} />
                 <div className="flex flex-col">
                     <figcaption className="text-sm font-medium text-foreground">
                         {name}
