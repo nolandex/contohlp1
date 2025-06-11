@@ -13,7 +13,8 @@ const Pricing = () => {
     const filteredPlans = pricingContent.plans.filter(plan => plan.id !== "enterprise");
 
     return (
-        <div className="flex flex-col items-center justify-center py-12 md:py-16 lg:py-24 w-full relative">
+        // 👇 REVISI: Menambahkan id="pricing" di sini agar bisa di-scroll dari Navbar
+        <div id="pricing" className="flex flex-col items-center justify-center py-12 md:py-16 lg:py-24 w-full relative">
             <Container className="overflow-x-hidden">
                 <div className="flex flex-col items-center text-center max-w-xl mx-auto">
                     <SectionBadge title={pricingContent.badge} />
