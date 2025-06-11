@@ -1,40 +1,27 @@
-// src/components/marketing/pricing.tsx
-
 "use client";
 
-import { pricingContent, siteConfig } from "@/config/content"; // <-- IMPORT
-import { cn } from "@/functions"; 
+import { pricingContent, siteConfig } from "@/config/content";
+import { cn } from "@/functions";
 import { CheckIcon } from "lucide-react";
 import Link from "next/link";
-import { useState } from "react";
 import Container from "../global/container";
 import { Button } from "../ui/button";
 import NumberTicker from "../ui/number-ticker";
 import { SectionBadge } from "../ui/section-bade";
-import Image from "next/image";
 
 const Pricing = () => {
     const filteredPlans = pricingContent.plans.filter(plan => plan.id !== "enterprise");
-    const images = pricingContent.images; // <-- Gunakan dari config
-
-    const [currentIndex, setCurrentIndex] = useState(0);
-
-    const handleNavigationClick = (index: number) => {
-        setCurrentIndex(index);
-    };
-
-    const activePlans = filteredPlans;
 
     return (
         <div className="flex flex-col items-center justify-center py-12 md:py-16 lg:py-24 w-full relative">
             <Container className="overflow-x-hidden">
                 <div className="flex flex-col items-center text-center max-w-xl mx-auto">
-                    <SectionBadge title={pricingContent.badge} /> {/* <-- GANTI */}
+                    <SectionBadge title={pricingContent.badge} />
                     <h2 className="text-2xl md:text-4xl lg:text-5xl font-heading font-medium !leading-snug mt-6">
-                        {pricingContent.headline} {/* <-- GANTI */}
+                        {pricingContent.headline}
                     </h2>
                     <p className="text-base md:text-lg text-center text-accent-foreground/80 mt-6">
-                        {pricingContent.subheadline} {/* <-- GANTI */}
+                        {pricingContent.subheadline}
                     </p>
                 </div>
             </Container>
@@ -46,74 +33,12 @@ const Pricing = () => {
                 <Container>
                     <div className="w-full flex flex-col items-center justify-center mb-8 sm:mb-12">
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full max-w-6xl mx-auto">
-                            {activePlans.map((plan, index) => (
+                            {filteredPlans.map((plan, index) => (
                                 <Plan
-                                    key={`${plan.id}-${images[currentIndex].categoryId}`}
+                                    key={`${plan.id}`}
                                     index={index}
                                     {...plan}
                                 />
-                            ))}
-                        </div>
-                    </div>
-
-                    <div className="w-full max-w-3xl mx-auto flex flex-col items-center">
-                        <div className="relative w-full overflow-hidden rounded-xl group">
-                            <div
-                                className="flex transition-transform duration-500 ease-in-out"
-                                style={{ transform: `translateX(-${currentIndex * 100}%)` }}
-                            >
-                                {images.map((image, imgIndex) => (
-                                    <div key={imgIndex} className="w-full flex-shrink-0">
-                                        <div className="relative rounded-xl lg:rounded-[28px] border border-neutral-200/50 p-1.5 md:p-2 backdrop-blur-sm border-neutral-700 bg-neutral-800/50">
-                                            <div className="absolute top-1/4 left-1/2 -z-10 gradient w-3/4 -translate-x-1/2 h-1/4 -translate-y-1/2 inset-0 blur-[8rem] md:blur-[10rem]"></div>
-                                            <div className="rounded-lg lg:rounded-[20px] border p-1.5 md:p-2 border-neutral-700 bg-black overflow-hidden">
-                                                <Image
-                                                    src={image.src}
-                                                    alt={image.alt}
-                                                    width={1280}
-                                                    height={720}
-                                                    className="rounded-md lg:rounded-[16px] w-full h-auto aspect-video object-cover"
-                                                    priority={imgIndex === 0}
-                                                />
-                                            </div>
-                                            <div className="flex justify-between items-center pt-3 pb-2 md:pt-4 md:pb-3 px-3 sm:px-4">
-                                                <h3 className="text-sm sm:text-base md:text-lg font-medium text-foreground text-left mr-2 truncate">
-                                                    {image.name}
-                                                </h3>
-                                                <Button
-                                                    asChild
-                                                    variant="default"
-                                                    size="sm"
-                                                    className="whitespace-nowrap px-3 py-1.5 sm:px-4"
-                                                >
-                                                    <Link href={`${siteConfig.orderBasePath}?service=${image.categoryId}`}> {/* <-- GANTI */}
-                                                        {pricingContent.orderButtonText} {/* <-- GANTI */}
-                                                    </Link>
-                                                </Button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
-
-                        <div className="flex flex-wrap justify-center items-center gap-2 sm:gap-3 mt-6 px-1">
-                            {images.map((image, index) => (
-                                <Button
-                                    key={image.categoryId}
-                                    variant={currentIndex === index ? "default" : "outline"}
-                                    size="sm" 
-                                    onClick={() => handleNavigationClick(index)}
-                                    className={cn(
-                                        "transition-all duration-200 ease-in-out",
-                                        "text-xs sm:text-sm leading-tight",
-                                        "h-auto px-2.5 py-1.5 sm:px-3 sm:py-2",
-                                        currentIndex === index ? "shadow-md ring-2 ring-primary ring-offset-background ring-offset-2" : "hover:bg-accent hover:text-accent-foreground"
-                                    )}
-                                    style={{ minWidth: 'fit-content' }}
-                                >
-                                    {image.name}
-                                </Button>
                             ))}
                         </div>
                     </div>
@@ -173,7 +98,7 @@ const Plan = ({
                     <div className="flex flex-col items-start gap-1">
                         <div className="flex items-end gap-1">
                             <span className="text-3xl md:text-4xl font-bold text-foreground">
-                                {siteConfig.currency}{displayedPrice === 0 ? "0" : <NumberTicker value={displayedPrice * 1000} />} {/* <-- GANTI */}
+                                {siteConfig.currency}{displayedPrice === 0 ? "0" : <NumberTicker value={displayedPrice * 1000} />}
                             </span>
                         </div>
                     </div>
@@ -195,7 +120,7 @@ const Plan = ({
                         className="w-full text-sm sm:text-base"
                         size="lg"
                     >
-                        <Link href={`${siteConfig.orderBasePath}?plan=${id}`}> {/* <-- GANTI */}
+                        <Link href={`${siteConfig.orderBasePath}?plan=${id}`}>
                             {buttonText}
                         </Link>
                     </Button>
