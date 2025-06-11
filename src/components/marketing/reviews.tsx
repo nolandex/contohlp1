@@ -1,37 +1,40 @@
 // src/components/marketing/reviews.tsx
 
-import { reviewsContent } from "@/config/content"; // <-- IMPORT
+import { reviewsContent } from "@/config/content";
 import Container from "../global/container";
 import Marquee from "../ui/marquee";
 import { SectionBadge } from "../ui/section-bade";
 import Image from "next/image";
 
-const firstRow = reviewsContent.reviews.slice(0, reviewsContent.reviews.length / 2); // <-- GANTI
-const secondRow = reviewsContent.reviews.slice(reviewsContent.reviews.length / 2); // <-- GANTI
+const firstRow = reviewsContent.reviews.slice(0, reviewsContent.reviews.length / 2);
+const secondRow = reviewsContent.reviews.slice(reviewsContent.reviews.length / 2);
 
 const Reviews = () => {
     return (
         <div className="flex flex-col items-center justify-center py-12 md:py-16 lg:py-24  w-full">
             <Container>
                 <div className="flex flex-col items-center text-center max-w-xl mx-auto">
-                    <SectionBadge title={reviewsContent.badge} /> {/* <-- GANTI */}
+                    <SectionBadge title={reviewsContent.badge} />
                     <h2 className="text-2xl md:text-4xl lg:text-5xl font-heading font-medium !leading-snug mt-6">
-                        {reviewsContent.headline} {/* <-- GANTI */}
+                        {reviewsContent.headline}
                     </h2>
                     <p className="text-base md:text-lg text-center text-accent-foreground/80 mt-6">
-                        {reviewsContent.subheadline} {/* <-- GANTI */}
+                        {reviewsContent.subheadline}
                     </p>
                 </div>
             </Container>
             <Container>
                 <div className="mt-16 w-full relative overflow-hidden">
                     <div className="relative flex flex-col items-center justify-center overflow-hidden">
-                        <Marquee pauseOnHover className="[--duration:30s]">
+                        {/* --- PERUBAHAN DI SINI --- */}
+                        {/* Durasi diubah dari 30s menjadi 20s untuk mempercepat gerakan */}
+                        <Marquee pauseOnHover className="[--duration:20s]">
                             {firstRow.map((review) => (
                                 <ReviewCard key={review.username} {...review} />
                             ))}
                         </Marquee>
-                        <Marquee pauseOnHover reverse className="[--duration:30s]">
+                        {/* --- PERUBAHAN DI SINI JUGA --- */}
+                        <Marquee pauseOnHover reverse className="[--duration:20s]">
                             {secondRow.map((review) => (
                                 <ReviewCard key={review.username} {...review} />
                             ))}
@@ -58,7 +61,6 @@ const ReviewCard = ({
     username: string;
     review: string;
 }) => {
-    // ... (Isi komponen ReviewCard tidak perlu diubah)
     return (
         <figure className="relative w-64 cursor-pointer overflow-hidden rounded-xl border border-foreground/5 bg-neutral-50/[.05] hover:bg-foreground/10 p-4 transition-all duration-300 ease-in-out">
             <div className="flex flex-row items-center gap-2">
