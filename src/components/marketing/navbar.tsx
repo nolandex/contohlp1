@@ -3,10 +3,35 @@
 import Link from 'next/link'
 import { useState } from 'react'
 import { Menu, X } from 'lucide-react'
-import { Button } from '@/components/ui/button'
+// Pastikan path ke Button sudah benar, jika Anda menggunakannya.
+// import { Button } from '@/components/ui/button' 
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
+
+  // Fungsi untuk menangani smooth scroll
+  const handleScroll = (e) => {
+    // 1. Mencegah perilaku default dari link
+    e.preventDefault();
+
+    // 2. Ambil tujuan (ID) dari atribut href
+    const href = e.currentTarget.href;
+    const targetId = href.replace(/.*#/, ""); // Menghasilkan 'pricing'
+
+    // 3. Dapatkan elemen tujuan berdasarkan ID
+    const elem = document.getElementById(targetId);
+
+    // 4. Lakukan scroll ke elemen tersebut jika ada
+    if (elem) {
+      elem.scrollIntoView({
+        behavior: "smooth",
+      });
+
+      // 5. Tutup menu mobile jika sedang terbuka
+      setIsOpen(false);
+    }
+  };
+
 
   return (
     <header className="fixed top-0 left-0 w-full z-50 bg-[rgba(10,10,10,0.6)] backdrop-blur-md">
@@ -29,18 +54,20 @@ export default function Navbar() {
           </div>
 
           {/* Desktop Menu */}
-          <div className="hidden lg:flex space-x-6">
+          <div className="hidden lg:flex space-x-6 items-center">
             <Link
               href="/"
               className="text-sm font-medium text-white hover:text-primary transition-colors"
             >
               Home
             </Link>
+            {/* --- REVISI DI SINI --- */}
             <Link
-              href="/pricing#pricing"
+              href="#pricing"
+              onClick={handleScroll} // Tambahkan onClick handler
               className="text-sm font-medium text-white hover:text-primary transition-colors"
             >
-              Price
+              Product
             </Link>
           </div>
         </div>
@@ -59,12 +86,13 @@ export default function Navbar() {
                 </Link>
               </li>
               <li>
+                {/* --- REVISI DI SINI --- */}
                 <Link
-                  href="/pricing#pricing"
-                  onClick={() => setIsOpen(false)}
+                  href="#pricing"
+                  onClick={handleScroll} // Tambahkan onClick handler
                   className="block text-sm font-medium hover:text-primary transition-colors"
                 >
-                  Price
+                  Product
                 </Link>
               </li>
             </ul>
