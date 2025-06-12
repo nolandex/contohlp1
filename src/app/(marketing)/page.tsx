@@ -16,7 +16,12 @@ const HomePage = () => {
                     <Companies />
                 </Container>
                 <Perks />
-                <Pricing />
+
+                {/* Tambahkan ID "pricing" di sini */}
+                <div id="pricing">
+                    <Pricing />
+                </div>
+
                 <Reviews />
             </Wrapper>
         </Background>
