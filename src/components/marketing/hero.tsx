@@ -4,11 +4,17 @@
 
 import { heroContent } from "@/config/content";
 import { ArrowRightIcon } from "lucide-react";
-import Link from "next/link";
 import { BlurText } from "../ui/blur-text";
 import { Button } from "../ui/button";
 
 const Hero = () => {
+  const scrollToPricing = () => {
+    const pricingSection = document.getElementById("pricing");
+    if (pricingSection) {
+      pricingSection.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <div className="flex flex-col items-center text-center w-full max-w-5xl my-16 mx-auto z-40 relative px-4">
       {/* Shiny animated badge */}
@@ -39,15 +45,16 @@ const Hero = () => {
 
       {/* CTA Buttons */}
       <div className="flex items-center justify-center md:gap-x-6 mt-8">
-        <Button asChild size="lg">
-          <Link href={heroContent.ctaPrimary.href} prefetch={false}>
-            {heroContent.ctaPrimary.text}
-          </Link>
+        <Button size="lg" onClick={scrollToPricing}>
+          {heroContent.ctaPrimary.text}
         </Button>
-        <Button asChild size="lg" variant="outline" className="hidden md:flex">
-          <Link href={heroContent.ctaSecondary.href} prefetch={false}>
-            {heroContent.ctaSecondary.text}
-          </Link>
+        <Button
+          size="lg"
+          variant="outline"
+          className="hidden md:flex"
+          onClick={scrollToPricing}
+        >
+          {heroContent.ctaSecondary.text}
         </Button>
       </div>
 
