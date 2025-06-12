@@ -1,49 +1,15 @@
+// src/components/marketing/companies.tsx (atau di mana pun file Anda berada)
+
+// Impor komponen Image dari Next.js dan Marquee
+import Image from "next/image";
 import Marquee from "../ui/marquee";
 
 const Companies = () => {
-    // Array of logo objects with URL and alt text
-    const logos = [
-        {
-            src: "https://logoipsum.com/logo/logo-1.svg",
-            alt: "Company 1 Logo",
-        },
-        {
-            src: "https://logoipsum.com/logo/logo-2.svg",
-            alt: "Company 2 Logo",
-        },
-        {
-            src: "https://logoipsum.com/logo/logo-3.svg",
-            alt: "Company 3 Logo",
-        },
-        {
-            src: "https://logoipsum.com/logo/logo-4.svg",
-            alt: "Company 4 Logo",
-        },
-        {
-            src: "https://logoipsum.com/logo/logo-5.svg",
-            alt: "Company 5 Logo",
-        },
-        {
-            src: "https://logoipsum.com/logo/logo-6.svg",
-            alt: "Company 6 Logo",
-        },
-        {
-            src: "https://logoipsum.com/logo/logo-7.svg",
-            alt: "Company 7 Logo",
-        },
-        {
-            src: "https://logoipsum.com/logo/logo-8.svg",
-            alt: "Company 8 Logo",
-        },
-        {
-            src: "https://logoipsum.com/logo/logo-9.svg",
-            alt: "Company 9 Logo",
-        },
-        {
-            src: "https://logoipsum.com/logo/logo-10.svg",
-            alt: "Company 10 Logo",
-        },
-    ];
+    // Membuat array logo secara dinamis untuk 10 gambar
+    const logos = Array.from({ length: 10 }, (_, i) => ({
+        src: `/logos/${i + 1}.jpg`, // Path ke gambar di folder public
+        alt: `Logo Perusahaan ${i + 1}`,
+    }));
 
     return (
         <div className="flex w-full py-20">
@@ -53,17 +19,25 @@ const Companies = () => {
                 </h2>
                 <div className="mt-16 w-full relative overflow-hidden">
                     <Marquee pauseOnHover className="[--duration:30s]">
+                        {/* Menggunakan div pembungkus di dalam Marquee adalah praktik yang baik
+                          agar styling lebih konsisten.
+                        */}
                         <div className="flex gap-8 md:gap-12">
                             {logos.map((logo, index) => (
-                                <img
+                                // --- PERUBAHAN DI SINI ---
+                                // Mengganti <img> dengan komponen <Image> dari Next.js
+                                <Image
                                     key={index}
                                     src={logo.src}
                                     alt={logo.alt}
-                                    className="w-24 h-8 object-contain"
+                                    width={96}  // w-24 di Tailwind = 6rem = 96px
+                                    height={32} // h-8 di Tailwind = 2rem = 32px
+                                    className="object-contain" // object-contain tetap berguna
                                 />
                             ))}
                         </div>
                     </Marquee>
+                    {/* Efek gradien di sisi kiri dan kanan */}
                     <div className="pointer-events-none absolute inset-y-0 left-0 w-1/4 bg-gradient-to-r from-background"></div>
                     <div className="pointer-events-none absolute inset-y-0 right-0 w-1/4 bg-gradient-to-l from-background"></div>
                 </div>
