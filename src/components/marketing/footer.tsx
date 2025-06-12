@@ -22,10 +22,10 @@ const Footer = () => {
                         <Accordion type="single" collapsible className="w-full max-w-2xl">
                             {footerContent.faqs.map((faq, index) => (
                                 <AccordionItem key={index} value={`item-${index + 1}`}>
-                                    <AccordionTrigger className="text-left hover:no-underline [&[data-state=open]]:scale-100 [&[data-state=open]]:font-normal">
+                                    <AccordionTrigger className="text-left text-base sm:text-lg font-normal hover:no-underline [&[data-state=open]]:text-base [&[data-state=open]]:sm:text-lg [&[data-state=open]]:font-normal [&[data-state=open]]:scale-100">
                                         {faq.question}
                                     </AccordionTrigger>
-                                    <AccordionContent className="text-left">
+                                    <AccordionContent className="text-left text-base sm:text-lg">
                                         {faq.answer}
                                     </AccordionContent>
                                 </AccordionItem>
