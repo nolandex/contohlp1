@@ -1,4 +1,4 @@
-// src/components/marketing/footer.tsx
+// src/components/marketing/footer.tsx (atau file yang sesuai)
 
 "use client";
 
@@ -22,10 +22,10 @@ const Footer = () => {
                         <Accordion type="single" collapsible className="w-full max-w-2xl">
                             {footerContent.faqs.map((faq, index) => (
                                 <AccordionItem key={index} value={`item-${index + 1}`}>
-                                    <AccordionTrigger className="text-left text-base sm:text-lg font-normal hover:no-underline [&[data-state=open]]:text-base [&[data-state=open]]:sm:text-lg [&[data-state=open]]:font-normal [&[data-state=open]]:scale-100">
+                                    <AccordionTrigger className="text-left text-lg font-normal py-3 hover:no-underline [&[data-state=open]]:text-lg [&[data-state=open]]:font-normal [&[data-state=open]]:py-3 [&[data-state=open]]:scale-100">
                                         {faq.question}
                                     </AccordionTrigger>
-                                    <AccordionContent className="text-left text-base sm:text-lg">
+                                    <AccordionContent className="text-left text-lg py-3">
                                         {faq.answer}
                                     </AccordionContent>
                                 </AccordionItem>
