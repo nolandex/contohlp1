@@ -22,12 +22,10 @@ const Footer = () => {
                         <Accordion type="single" collapsible className="w-full max-w-2xl">
                             {footerContent.faqs.map((faq, index) => (
                                 <AccordionItem key={index} value={`item-${index + 1}`}>
-                                    {/* --- PERUBAHAN DI SINI --- */}
-                                    {/* Menambahkan 'text-left' untuk memastikan semua teks rata kiri */}
-                                    <AccordionTrigger className="text-left"> 
+                                    <AccordionTrigger className="text-left hover:no-underline [&[data-state=open]]:scale-100 [&[data-state=open]]:font-normal">
                                         {faq.question}
                                     </AccordionTrigger>
-                                    <AccordionContent className="text-left"> {/* Juga tambahkan di sini untuk konsistensi jawaban */}
+                                    <AccordionContent className="text-left">
                                         {faq.answer}
                                     </AccordionContent>
                                 </AccordionItem>
@@ -48,4 +46,3 @@ const Footer = () => {
 };
 
 export default Footer;
-
