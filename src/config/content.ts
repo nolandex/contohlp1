@@ -1,5 +1,3 @@
-// src/config/content.ts
-
 import {
   LucideIcon,
   Coffee,
@@ -13,12 +11,6 @@ import {
   Award,
   Clock
 } from "lucide-react";
-
-// ===================================================================================
-// --- BAGIAN INI WAJIB ADA ---
-// Ini adalah definisi "kamus" atau "blueprint" untuk data kita.
-// TypeScript memerlukan ini untuk memeriksa apakah data yang kita masukkan sudah benar.
-// ===================================================================================
 
 interface Plan {
   id: 'basic' | 'pro' | 'enterprise';
@@ -55,8 +47,6 @@ interface Faq {
   answer: string;
 }
 
-// --- KONFIGURASI GLOBAL WEBSITE ---
-
 export const siteConfig = {
   companyName: "Bisnovo",
   contactEmail: "hello@bisnovo.id",
@@ -65,9 +55,6 @@ export const siteConfig = {
   orderBasePath: "/pesan-sekarang",
 };
 
-// --- KONTEN HALAMAN MARKETING ---
-
-// 1. Hero Section
 export const heroContent = {
   badge: {
     mainText: "Promo Launching!",
@@ -77,15 +64,14 @@ export const heroContent = {
   subheadline: `Dapatkan website, chatbot penjualan, dan konten media sosial siap pakai untuk memulai bisnis online Anda hari ini juga dengan ${siteConfig.companyName}.`,
   ctaPrimary: {
     text: "Lihat Paket Kami",
-    href: "/paket"
+    href: "#pricing"
   },
   ctaSecondary: {
-    text: "Daftar Reseller",
-    href: "/reseller"
+    text: "Lihat Penawaran",
+    href: "#pricing"
   }
 };
 
-// 2. Perks Section -> Diubah menjadi "Keunggulan Kami"
 export const perksContent = {
   badge: "Solusi Lengkap",
   headline: "Semua yang Anda Butuhkan untuk Mulai Bisnis Online",
@@ -124,7 +110,6 @@ export const perksContent = {
   ] as Perk[]
 };
 
-// 3. Reviews Section
 export const reviewsContent = {
   badge: "Testimoni",
   headline: "Apa Kata Klien Kami",
@@ -157,7 +142,6 @@ export const reviewsContent = {
   ] as Review[]
 };
 
-// 4. Pricing Section -> Diubah menjadi "Paket Kami"
 export const pricingContent = {
   badge: "Paket Lengkap",
   headline: "Hanya Rp200rb untuk Semua Ini",
@@ -218,7 +202,6 @@ export const pricingContent = {
   ] as PricingImage[]
 };
 
-// 5. Footer Section
 export const footerContent = {
   faqHeadline: "Pertanyaan Umum",
   faqs: [
@@ -239,4 +222,4 @@ export const footerContent = {
       answer: "Kami memberikan garansi 7 hari uang kembali jika Anda tidak puas dengan layanan kami."
     }
   ] as Faq[]
-}; 
+};
