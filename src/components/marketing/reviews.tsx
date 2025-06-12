@@ -4,14 +4,13 @@ import { reviewsContent } from "@/config/content";
 import Container from "../global/container";
 import Marquee from "../ui/marquee";
 import { SectionBadge } from "../ui/section-bade";
-import Image from "next/image";
 
 const firstRow = reviewsContent.reviews.slice(0, reviewsContent.reviews.length / 2);
 const secondRow = reviewsContent.reviews.slice(reviewsContent.reviews.length / 2);
 
 const Reviews = () => {
     return (
-        <div className="flex flex-col items-center justify-center py-12 md:py-16 lg:py-24  w-full">
+        <div className="flex flex-col items-center justify-center py-12 md:py-16 lg:py-24 w-full">
             <Container>
                 <div className="flex flex-col items-center text-center max-w-xl mx-auto">
                     <SectionBadge title={reviewsContent.badge} />
@@ -26,17 +25,15 @@ const Reviews = () => {
             <Container>
                 <div className="mt-16 w-full relative overflow-hidden">
                     <div className="relative flex flex-col items-center justify-center overflow-hidden">
-                        {/* --- PERUBAHAN DI SINI --- */}
-                        {/* Durasi diubah dari 30s menjadi 20s untuk mempercepat gerakan */}
+                        {/* Durasi marquee dipercepat */}
                         <Marquee pauseOnHover className="[--duration:20s]">
                             {firstRow.map((review) => (
-                                <ReviewCard key={review.username} {...review} />
+                                <ReviewCard key={review.name} {...review} />
                             ))}
                         </Marquee>
-                        {/* --- PERUBAHAN DI SINI JUGA --- */}
                         <Marquee pauseOnHover reverse className="[--duration:20s]">
                             {secondRow.map((review) => (
-                                <ReviewCard key={review.username} {...review} />
+                                <ReviewCard key={review.name} {...review} />
                             ))}
                         </Marquee>
                         <div className="pointer-events-none absolute inset-y-0 left-0 w-1/4 bg-gradient-to-r from-background"></div>
@@ -47,34 +44,26 @@ const Reviews = () => {
                 </div>
             </Container>
         </div>
-    )
+    );
 };
 
 const ReviewCard = ({
-    img,
     name,
-    username,
     review,
 }: {
-    img: string;
     name: string;
-    username: string;
     review: string;
 }) => {
     return (
         <figure className="relative w-64 cursor-pointer overflow-hidden rounded-xl border border-foreground/5 bg-neutral-50/[.05] hover:bg-foreground/10 p-4 transition-all duration-300 ease-in-out">
-            <div className="flex flex-row items-center gap-2">
-                <Image className="rounded-full" width="32" height="32" alt={name} src={img} />
-                <div className="flex flex-col">
-                    <figcaption className="text-sm font-medium text-foreground">
-                        {name}
-                    </figcaption>
-                    <p className="text-xs font-medium text-foreground/40">{username}</p>
-                </div>
-            </div>
-            <blockquote className="mt-2 text-sm">{review}</blockquote>
+            <figcaption className="text-sm font-medium text-foreground">
+                {name}
+            </figcaption>
+            <blockquote className="mt-2 text-sm text-foreground/80">
+                {review}
+            </blockquote>
         </figure>
     );
 };
 
-export default Reviews
+export default Reviews;
