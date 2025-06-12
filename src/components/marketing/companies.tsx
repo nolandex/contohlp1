@@ -1,13 +1,14 @@
-// src/components/marketing/companies.tsx (atau di mana pun file Anda berada)
+// src/components/marketing/companies.tsx
 
 // Impor komponen Image dari Next.js dan Marquee
 import Image from "next/image";
 import Marquee from "../ui/marquee";
 
 const Companies = () => {
-    // Membuat array logo secara dinamis untuk 10 gambar
-    const logos = Array.from({ length: 10 }, (_, i) => ({
-        src: `/logos/${i + 1}.jpg`, // Path ke gambar di folder public
+    // Mengubah jumlah logo menjadi 8
+    const logos = Array.from({ length: 8 }, (_, i) => ({
+        // --- PERUBAHAN DI SINI ---
+        src: `/logos/${i + 1}.svg`, // Diubah dari .jpg menjadi .svg
         alt: `Logo Perusahaan ${i + 1}`,
     }));
 
@@ -19,20 +20,15 @@ const Companies = () => {
                 </h2>
                 <div className="mt-16 w-full relative overflow-hidden">
                     <Marquee pauseOnHover className="[--duration:30s]">
-                        {/* Menggunakan div pembungkus di dalam Marquee adalah praktik yang baik
-                          agar styling lebih konsisten.
-                        */}
                         <div className="flex gap-8 md:gap-12">
                             {logos.map((logo, index) => (
-                                // --- PERUBAHAN DI SINI ---
-                                // Mengganti <img> dengan komponen <Image> dari Next.js
                                 <Image
                                     key={index}
                                     src={logo.src}
                                     alt={logo.alt}
-                                    width={96}  // w-24 di Tailwind = 6rem = 96px
-                                    height={32} // h-8 di Tailwind = 2rem = 32px
-                                    className="object-contain" // object-contain tetap berguna
+                                    width={96}
+                                    height={32}
+                                    className="object-contain"
                                 />
                             ))}
                         </div>
