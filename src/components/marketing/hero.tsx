@@ -3,7 +3,6 @@
 "use client";
 
 import { heroContent } from "@/config/content";
-import { ArrowRightIcon } from "lucide-react";
 import { BlurText } from "../ui/blur-text";
 import { Button } from "../ui/button";
 
@@ -27,7 +26,6 @@ const Hero = () => {
           {heroContent.badge.mainText}
           <span className="text-xs text-secondary-foreground px-1.5 py-0.5 rounded-full bg-gradient-to-b from-foreground/20 to-foreground/10 flex items-center justify-center">
             {heroContent.badge.subText}
-            <ArrowRightIcon className="w-3.5 h-3.5 ml-1 text-foreground/50" />
           </span>
         </span>
       </div>
