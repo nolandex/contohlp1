@@ -1,4 +1,4 @@
-"use client";
+// REVISI: Baris "use client"; telah dihapus dari sini. Ini adalah perbaikannya.
 
 import {
   LucideIcon,
@@ -12,14 +12,14 @@ import {
 
 // TYPE DEFINITIONS
 interface Plan {
-  id: 'basic' | 'pro'; // 'enterprise' dihapus
+  id: 'basic' | 'pro';
   title: string;
   desc: string;
   monthlyPrice: number;
   badge?: string;
   buttonText: string;
   features: string[];
-  orderUrl: string; // REVISI: Properti baru untuk link
+  orderUrl: string;
 }
 
 interface Perk {
@@ -68,7 +68,7 @@ export const heroContent = {
   }
 };
 
-// PERKS CONTENT (tetap sama)
+// PERKS CONTENT
 export const perksContent = {
   badge: "Solusi Lengkap",
   headline: "Semua yang Anda Butuhkan untuk Mulai Bisnis Online",
@@ -107,7 +107,7 @@ export const perksContent = {
   ] as Perk[]
 };
 
-// REVIEWS CONTENT (tetap sama)
+// REVIEWS CONTENT
 export const reviewsContent = {
     badge: "Testimoni",
     headline: "Apa Kata Klien Kami",
@@ -160,7 +160,6 @@ export const pricingContent = {
         "Strategi Marketing Step-by-Step",
         "Support 1 Minggu Gratis"
       ],
-      // REVISI: Link WhatsApp didefinisikan langsung di sini
       orderUrl: `https://wa.me/${siteConfig.contactPhone}?text=Halo%20Bisnovo%2C%20saya%20tertarik%20dengan%20paket%20%22Paket%20Starter%22.%20Mohon%20informasinya.`,
     },
     {
@@ -178,13 +177,12 @@ export const pricingContent = {
         "Akses ke Komunitas Reseller",
         "Bisa Dijalankan Sampingan"
       ],
-      // REVISI: Link WhatsApp didefinisikan langsung di sini
       orderUrl: `https://wa.me/${siteConfig.contactPhone}?text=Halo%20Bisnovo%2C%20saya%20tertarik%20dengan%20paket%20%22Paket%20Reseller%22.%20Mohon%20informasinya.`,
     },
   ] as Plan[],
 };
 
-// FOOTER CONTENT (tetap sama)
+// FOOTER CONTENT
 export const footerContent = {
   faqHeadline: "Pertanyaan Umum",
   faqs: [
