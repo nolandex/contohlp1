@@ -10,9 +10,8 @@ import NumberTicker from "../ui/number-ticker";
 import { SectionBadge } from "../ui/section-bade";
 
 const Pricing = () => {
-    // Filter ini sudah tidak menyaring apa-apa karena paket 'enterprise' sudah dihapus,
-    // tapi tidak ada salahnya dibiarkan.
-    const filteredPlans = pricingContent.plans.filter(plan => plan.id !== "enterprise");
+    // REVISI: Langsung gunakan plans dari konten tanpa filter
+    const filteredPlans = pricingContent.plans;
 
     return (
         <div id="pricing" className="flex flex-col items-center justify-center py-12 md:py-16 lg:py-24 w-full relative">
@@ -50,7 +49,6 @@ const Pricing = () => {
     );
 };
 
-// REVISI: Komponen Plan sekarang lebih sederhana
 const Plan = ({
     id,
     title,
@@ -59,7 +57,7 @@ const Plan = ({
     badge,
     buttonText,
     features,
-    orderUrl, // Menerima URL dari props
+    orderUrl,
     index,
 }: {
     id: string;
@@ -69,12 +67,10 @@ const Plan = ({
     badge?: string;
     buttonText: string;
     features: string[];
-    orderUrl: string; // Tipe data untuk URL
+    orderUrl: string;
     index: number;
 }) => {
     const displayedPrice = monthlyPrice;
-
-    // Tidak ada lagi logika pembuatan URL di sini
 
     return (
         <div className="w-full relative flex flex-col saturate-150 rounded-2xl h-full">
@@ -127,7 +123,6 @@ const Plan = ({
                         className="w-full text-sm sm:text-base"
                         size="lg"
                     >
-                        {/* REVISI: Langsung menggunakan orderUrl dari props */}
                         <Link href={orderUrl} target="_blank">
                             {buttonText}
                         </Link>
