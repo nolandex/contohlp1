@@ -10,10 +10,11 @@ import NumberTicker from "../ui/number-ticker";
 import { SectionBadge } from "../ui/section-bade";
 
 const Pricing = () => {
+    // Filter ini sudah tidak menyaring apa-apa karena paket 'enterprise' sudah dihapus,
+    // tapi tidak ada salahnya dibiarkan.
     const filteredPlans = pricingContent.plans.filter(plan => plan.id !== "enterprise");
 
     return (
-        // 👇 REVISI: Menambahkan id="pricing" di sini agar bisa di-scroll dari Navbar
         <div id="pricing" className="flex flex-col items-center justify-center py-12 md:py-16 lg:py-24 w-full relative">
             <Container className="overflow-x-hidden">
                 <div className="flex flex-col items-center text-center max-w-xl mx-auto">
@@ -49,6 +50,7 @@ const Pricing = () => {
     );
 };
 
+// REVISI: Komponen Plan sekarang lebih sederhana
 const Plan = ({
     id,
     title,
@@ -57,6 +59,7 @@ const Plan = ({
     badge,
     buttonText,
     features,
+    orderUrl, // Menerima URL dari props
     index,
 }: {
     id: string;
@@ -66,9 +69,12 @@ const Plan = ({
     badge?: string;
     buttonText: string;
     features: string[];
+    orderUrl: string; // Tipe data untuk URL
     index: number;
 }) => {
     const displayedPrice = monthlyPrice;
+
+    // Tidak ada lagi logika pembuatan URL di sini
 
     return (
         <div className="w-full relative flex flex-col saturate-150 rounded-2xl h-full">
@@ -121,7 +127,8 @@ const Plan = ({
                         className="w-full text-sm sm:text-base"
                         size="lg"
                     >
-                        <Link href={`${siteConfig.orderBasePath}?plan=${id}`}>
+                        {/* REVISI: Langsung menggunakan orderUrl dari props */}
+                        <Link href={orderUrl} target="_blank">
                             {buttonText}
                         </Link>
                     </Button>
