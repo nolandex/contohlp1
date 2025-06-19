@@ -1,25 +1,25 @@
+"use client";
+
 import {
   LucideIcon,
-  Coffee,
   Globe,
   MessageSquare,
   Smartphone,
   TrendingUp,
   FileText,
   Users,
-  Zap,
-  Award,
-  Clock
 } from "lucide-react";
 
+// TYPE DEFINITIONS
 interface Plan {
-  id: 'basic' | 'pro' | 'enterprise';
+  id: 'basic' | 'pro'; // 'enterprise' dihapus
   title: string;
   desc: string;
   monthlyPrice: number;
   badge?: string;
   buttonText: string;
   features: string[];
+  orderUrl: string; // REVISI: Properti baru untuk link
 }
 
 interface Perk {
@@ -35,26 +35,22 @@ interface Review {
   review: string;
 }
 
-interface PricingImage {
-  src: string;
-  alt: string;
-  name: string;
-  categoryId: string;
-}
-
 interface Faq {
   question: string;
   answer: string;
 }
 
+// SITE CONFIG
 export const siteConfig = {
   companyName: "Bisnovo",
   contactEmail: "hello@bisnovo.id",
+  contactPhone: "6285156779923",
   copyright: `© ${new Date().getFullYear()} Bisnovo. All rights reserved.`,
   currency: "Rp",
   orderBasePath: "/pesan-sekarang",
 };
 
+// HERO CONTENT
 export const heroContent = {
   badge: {
     mainText: "Promo Launching!",
@@ -72,6 +68,7 @@ export const heroContent = {
   }
 };
 
+// PERKS CONTENT (tetap sama)
 export const perksContent = {
   badge: "Solusi Lengkap",
   headline: "Semua yang Anda Butuhkan untuk Mulai Bisnis Online",
@@ -110,43 +107,44 @@ export const perksContent = {
   ] as Perk[]
 };
 
+// REVIEWS CONTENT (tetap sama)
 export const reviewsContent = {
-  badge: "Testimoni",
-  headline: "Apa Kata Klien Kami",
-  subheadline: "Lihat bagaimana Bisnovo telah membantu ratusan pebisnis memulai usaha online mereka.",
-  reviews: [
-    {
-      img: "https://i.pravatar.cc/150?u=reseller1",
-      name: "Andi Wijaya",
-      username: "@andi_reseller",
-      review: "Dengan paket Bisnovo, saya bisa mulai jualan online hanya dalam 1 hari! Sekarang sudah punya 5 reseller bawahannya.",
-    },
-    {
-      img: "https://i.pravatar.cc/150?u=umkm1",
-      name: "Siti Rahayu",
-      username: "@siti_kue",
-      review: "Website dan chatbotnya sangat membantu. Orderan masuk terus bahkan saat saya tidur!",
-    },
-    {
-      img: "https://i.pravatar.cc/150?u=mahasiswa1",
-      name: "Budi Santoso",
-      username: "@budi_startup",
-      review: "Sebagai mahasiswa, paket ini sangat terjangkau. Sekarang bisa punya penghasilan sendiri tanpa ganggu kuliah.",
-    },
-    {
-      img: "https://i.pravatar.cc/150?u=irt1",
-      name: "Dewi Lestari",
-      username: "@dewi_catering",
-      review: "Dulu takut go-online karena tidak paham teknologi. Sekarang bisnis catering saya 80% order dari online!",
-    },
-  ] as Review[]
+    badge: "Testimoni",
+    headline: "Apa Kata Klien Kami",
+    subheadline: "Lihat bagaimana Bisnovo telah membantu ratusan pebisnis memulai usaha online mereka.",
+    reviews: [
+        {
+            img: "https://i.pravatar.cc/150?u=reseller1",
+            name: "Andi Wijaya",
+            username: "@andi_reseller",
+            review: "Dengan paket Bisnovo, saya bisa mulai jualan online hanya dalam 1 hari! Sekarang sudah punya 5 reseller bawahannya.",
+        },
+        {
+            img: "https://i.pravatar.cc/150?u=umkm1",
+            name: "Siti Rahayu",
+            username: "@siti_kue",
+            review: "Website dan chatbotnya sangat membantu. Orderan masuk terus bahkan saat saya tidur!",
+        },
+        {
+            img: "https://i.pravatar.cc/150?u=mahasiswa1",
+            name: "Budi Santoso",
+            username: "@budi_startup",
+            review: "Sebagai mahasiswa, paket ini sangat terjangkau. Sekarang bisa punya penghasilan sendiri tanpa ganggu kuliah.",
+        },
+        {
+            img: "https://i.pravatar.cc/150?u=irt1",
+            name: "Dewi Lestari",
+            username: "@dewi_catering",
+            review: "Dulu takut go-online karena tidak paham teknologi. Sekarang bisnis catering saya 80% order dari online!",
+        },
+    ] as Review[]
 };
 
+// PRICING CONTENT
 export const pricingContent = {
   badge: "Paket Lengkap",
   headline: "Hanya Rp200rb untuk Semua Ini",
   subheadline: "Dapatkan semua yang Anda butuhkan untuk mulai bisnis online hari ini juga.",
-  orderButtonText: "Pesan Sekarang",
   plans: [
     {
       id: 'basic',
@@ -162,6 +160,8 @@ export const pricingContent = {
         "Strategi Marketing Step-by-Step",
         "Support 1 Minggu Gratis"
       ],
+      // REVISI: Link WhatsApp didefinisikan langsung di sini
+      orderUrl: `https://wa.me/${siteConfig.contactPhone}?text=Halo%20Bisnovo%2C%20saya%20tertarik%20dengan%20paket%20%22Paket%20Starter%22.%20Mohon%20informasinya.`,
     },
     {
       id: 'pro',
@@ -178,30 +178,13 @@ export const pricingContent = {
         "Akses ke Komunitas Reseller",
         "Bisa Dijalankan Sampingan"
       ],
-    },
-    {
-      id: 'enterprise',
-      title: "Paket Booster",
-      desc: "Tingkatkan penjualan dengan layanan premium dan iklan berbayar.",
-      monthlyPrice: 500,
-      buttonText: "Konsultasi Gratis",
-      features: [
-        "Semua Fitur Paket Starter",
-        "Setup Iklan Facebook/Instagram",
-        "Optimasi SEO Website",
-        "Analytics & Reporting",
-        "Support 1 Bulan Prioritas",
-        "Konsultasi Bisnis Eksklusif"
-      ],
+      // REVISI: Link WhatsApp didefinisikan langsung di sini
+      orderUrl: `https://wa.me/${siteConfig.contactPhone}?text=Halo%20Bisnovo%2C%20saya%20tertarik%20dengan%20paket%20%22Paket%20Reseller%22.%20Mohon%20informasinya.`,
     },
   ] as Plan[],
-  images: [
-    { src: "/images/website-demo.png", alt: "Contoh Website Bisnovo", name: "Website Bisnis", categoryId: "website" },
-    { src: "/images/chatbot-demo.png", alt: "Contoh Chatbot Bisnovo", name: "Chatbot Penjualan", categoryId: "chatbot" },
-    { src: "/images/content-demo.png", alt: "Contoh Konten Sosial Media", name: "Konten Media Sosial", categoryId: "content" },
-  ] as PricingImage[]
 };
 
+// FOOTER CONTENT (tetap sama)
 export const footerContent = {
   faqHeadline: "Pertanyaan Umum",
   faqs: [
